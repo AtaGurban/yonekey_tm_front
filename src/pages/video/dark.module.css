@@ -1,0 +1,40 @@
+.video-body * {
+    color: #e9e9e9;
+}
+.video-body {
+    background:#1b1b1b;
+}
+.menu {
+    background: #353535;
+}
+.search input {
+    background: #353535;
+}
+.mail input {
+    border-bottom: 2px solid rgba(196, 196, 196, 0.4);
+    background: none;
+}
+.mail {
+    background: #4e4e4e;
+}
+input::placeholder {
+    transition: 300ms;
+    color: #e9e9e9;
+}
+.mail input:focus::placeholder {
+    color: rgb(255, 255, 255);
+    font-size: 11px;
+    transform: translate(-3px,-20px);
+}
+#cross_line_1,#cross_line_2 {
+    background: rgb(148, 148, 148);
+}
+.cross:hover #cross_line_1, .cross:hover #cross_line_2 {
+    background: white;
+    }
+.logo {
+    color: white
+}
+.burger * {
+    background: #e9e9e9;
+}

@@ -15,9 +15,9 @@ import instagram from './instagram.png'
 
 const Lomay = () => {
   return (
-    <div>
+    <div className={`${styles["lomay-body"]}`}>
       <div className={`${styles["wrapper"]}`}>
-        <header>
+        <header className={`${styles["header-lomay"]}`}>
           <video autoPlay muted loop id={`${styles["video"]}`}>
             <source src={video} type="video/mp4" />
           </video>
@@ -48,7 +48,7 @@ const Lomay = () => {
         </header>
         <section className={`${styles["section_1"]}`} id='section'>
           <div className={`${styles["container"]}`}>
-            <h2>TÜRKMENISTANDA IÑ AMATLY LOMAÝ SÖWDA BAZARY</h2>
+            <h2 className={`${styles["h2-lomay"]}`}>TÜRKMENISTANDA IÑ AMATLY LOMAÝ SÖWDA BAZARY</h2>
             <p>
               Yonekey lomaý söwda internet platformasy Turkmenistanyñ islendik
               lomaý dükanlaryndan yokary derejeli hili we amatly bahasy bilen
@@ -63,7 +63,7 @@ const Lomay = () => {
             <div className={`${styles["boxes"]}`}>
               <div className={`${styles["box"]}`} style={{ margin: "0" }}>
                 <img src={one} alt="" />
-                <h3>LOMAÝ SÖWDAÑYZY ÝEŇILLEŞDIRMEK</h3>
+                <h3 className={`${styles["h3-lomay"]}`}>LOMAÝ SÖWDAÑYZY ÝEŇILLEŞDIRMEK</h3>
                 <p>
                   Söwdegäre yokary hilli harytlary köp möçberde asly bahasyndan
                   arzan alyp satmak mumkinciligi, ondan daşary hem kesgitlenilen
@@ -83,7 +83,7 @@ const Lomay = () => {
               </div>
               <div className={`${styles["box"]}`} style={{ margin: 0 }}>
                 <img src={three} alt="" />
-                <h3>HARYTLARYÑ KÖPDÜRLILIGI</h3>
+                <h3 className={`${styles["h3-lomay"]}`}>HARYTLARYÑ KÖPDÜRLILIGI</h3>
                 <p>
                   Internet platformamyzda siziñ wagtyñyzy we puluñyzy
                   tygşytlamak üçin niýetlenen köp sanly taýyn çözgütler
@@ -98,7 +98,7 @@ const Lomay = () => {
         </section>
         <section className={`${styles["section_2"]}`}>
           <div className={`${styles["container"]}`}>
-            <h2>ESASY BIZIŇ AÝRATYNLYKLARYMYZ</h2>
+            <h2 className={`${styles["h2-lomay"]}`}>ESASY BIZIŇ AÝRATYNLYKLARYMYZ</h2>
             <ul>
               <li>
                 <img src={tick} />
@@ -133,7 +133,7 @@ const Lomay = () => {
                 ÝOKARY HILI MÜŞDERI HYZMATY
               </li>
             </ul>
-            <h3>SIZ TAÝYNMY BIZNESIŇIZI INDIKI DEREJÄ GALDYRMAK ÜÇIN?</h3>
+            <h3 className={`${styles["h3-lomay"]}`}>SIZ TAÝYNMY BIZNESIŇIZI INDIKI DEREJÄ GALDYRMAK ÜÇIN?</h3>
             <a href="#iframe">HAWA MEN TAÝYN</a>
           </div>
         </section>
@@ -152,7 +152,7 @@ const Lomay = () => {
         </div>
         <section className={`${styles["section_3"]}`}>
           <div className={`${styles["container"]}`}>
-            <h2>BIZIŇ HYZMATLARYMYZ</h2>
+            <h2 className={`${styles["h2-lomay"]}`}>BIZIŇ HYZMATLARYMYZ</h2>
             <div className={`${styles["boxes"]}`}>
               <div className={`${styles["box_1"]} ${styles["box"]}`}>
                 <span>
@@ -175,7 +175,7 @@ const Lomay = () => {
         </section>
         <section className={`${styles["section_4"]}`}>
           <div className={`${styles["container"]}`}>
-            <h2>NAME ÜÇIN ÝÖNEKEÝ KÄRHANASY?</h2>
+            <h2 className={`${styles["h2-lomay"]}`}>NAME ÜÇIN ÝÖNEKEÝ KÄRHANASY?</h2>
             <p>
               Müşderilerimiziň, we hyzmatdaşlarymyzyň dürli markalar üçin
               synlaryny we pikirlerini yzygiderli seljeryäris we hemme
@@ -191,7 +191,7 @@ const Lomay = () => {
         </section>
         <section className={`${styles["section_5"]}`}>
           <div className={`${styles["container"]}`}>
-            <h2>EÝÝAM BIZ BILEN IŞLEŞEN BIZNESLER</h2>
+            <h2 className={`${styles["h2-lomay"]}`}>EÝÝAM BIZ BILEN IŞLEŞEN BIZNESLER</h2>
             <img src={section_5} alt="Our_Partners" />
           </div>
         </section>
@@ -202,7 +202,7 @@ const Lomay = () => {
             </a>
           </div>
         </section>
-        <footer>
+        <footer className={`${styles["footer-lomay"]}`}>
           <div className={`${styles["contact"]}`}>
             <h5>
               <img src={tel} alt="" />

@@ -1,0 +1,32 @@
+.video-body * {
+    color: #404040;
+}
+.video-body {
+    background:#F2F2F2;
+}
+.menu {
+    background: #E1E1E1;
+}
+.mail input {
+    border-bottom: 2px solid rgba(0,0,0,.4);
+}
+.mail {
+    background: #fdfdfd;
+}
+input::placeholder {
+    transition: 300ms;
+}
+.mail input:focus::placeholder {
+    color: red;
+    font-size: 11px;
+    transform: translate(-3px,-20px);
+}
+#cross_line_1,#cross_line_2 {
+    background: rgb(32, 32, 32);
+}
+.logo {
+    color: black;
+}
+.burger * {
+    background: #444444;
+}

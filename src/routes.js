@@ -1,7 +1,9 @@
+import Auth from "./pages/auth/Auth";
 import Developers from "./pages/developers/Developers";
 import Lomay from "./pages/lomay/Lomay";
 import Main from "./pages/main/Main";
-import { DEVELOPERS_PAGE, LOMAY_PAGE, MAIN_PAGE } from "./utils/pathConsts";
+import Video from "./pages/video/Video";
+import { AUTH_PAGE, DEVELOPERS_PAGE, LOMAY_PAGE, MAIN_PAGE, VIDEO_PAGE } from "./utils/pathConsts";
 
 
 // export const authRoutes = [
@@ -25,6 +27,10 @@ export const authRoutes = [
         path: DEVELOPERS_PAGE,
         Element: <Developers/>
     },
+    {
+        path: VIDEO_PAGE,
+        Element: <Video/>
+    },
 
 ]
 export const publicRoutes = [
@@ -40,6 +46,14 @@ export const publicRoutes = [
         path: DEVELOPERS_PAGE,
         Element: <Developers/>
     },
+    {
+        path: VIDEO_PAGE,
+        Element: <Video/>
+    },
+    {
+        path: AUTH_PAGE,
+        Element: <Auth/>
+    },
 ]
 export const adminRoutes = [
     {
@@ -53,6 +67,10 @@ export const adminRoutes = [
     {
         path: DEVELOPERS_PAGE,
         Element: <Developers/>
+    },
+    {
+        path: VIDEO_PAGE,
+        Element: <Video/>
     },
 ]
 
