@@ -9,7 +9,7 @@ const AppRouter = observer(() => {
 
   return (
     <Routes>
-    {(false) ? (
+    {(!false) ? (
         (("SUPERADMIN" === "ADMIN")|| ("SUPERADMIN" === "SUPERADMIN")) ? (
           adminRoutes.map((route) => (
             <Route

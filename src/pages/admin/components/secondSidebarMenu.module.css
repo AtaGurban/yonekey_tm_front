@@ -1,0 +1,32 @@
+.second-sidebar{
+    background-image: linear-gradient(to right top, #5cbefd, #51b4fe, #4ca8fe, #4e9dfc, #5790f9);
+    width: 20%;
+}
+
+.bottom-block{
+    position: absolute;
+    bottom: 8%;
+    width: 75%;
+    text-align: center;
+}
+
+.active-menu{
+    background-color: aliceblue;
+    color: #181b29;
+}
+
+.bottom-block hr {
+    height: 2px;
+    width: 100%;
+}
+
+.top-hr{
+    position: relative;
+    top: 107px;
+}
+
+.second-menu li{
+    padding: 10px 20px;
+    position: relative;
+    top: 107px;
+}

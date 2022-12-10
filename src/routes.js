@@ -1,9 +1,10 @@
+import Admin from "./pages/admin/Admin";
 import Auth from "./pages/auth/Auth";
 import Developers from "./pages/developers/Developers";
 import Lomay from "./pages/lomay/Lomay";
 import Main from "./pages/main/Main";
 import Video from "./pages/video/Video";
-import { AUTH_PAGE, DEVELOPERS_PAGE, LOMAY_PAGE, MAIN_PAGE, VIDEO_PAGE } from "./utils/pathConsts";
+import { ADMIN_PAGE, AUTH_PAGE, DEVELOPERS_PAGE, LOMAY_PAGE, MAIN_PAGE, VIDEO_PAGE } from "./utils/pathConsts";
 
 
 // export const authRoutes = [
@@ -71,6 +72,10 @@ export const adminRoutes = [
     {
         path: VIDEO_PAGE,
         Element: <Video/>
+    },
+    {
+        path: ADMIN_PAGE,
+        Element: <Admin/>
     },
 ]
 

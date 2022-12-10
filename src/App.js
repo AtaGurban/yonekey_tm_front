@@ -25,12 +25,12 @@ const App = observer(() => {
   }, []) 
 
   
-  if(loading){
-    return (
-      <div style={{alignItems: 'center',  justifyContent: 'center', height: '100vh'}} className='d-flex'>
-      <MoonLoader color="#000000" />
-    </div>)
-  }
+  // if(loading){
+  //   return (
+  //     <div style={{alignItems: 'center',  justifyContent: 'center', height: '100vh'}} className='d-flex'>
+  //     <MoonLoader color="#000000" />
+  //   </div>)
+  // }
   return (
     <BrowserRouter>
       <AppRouter />
