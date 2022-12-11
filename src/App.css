@@ -7,3 +7,65 @@ body{
 img{
   max-height: 100%;
 }
+
+#root{
+  min-height: 100vh;
+}
+
+.admin-table{
+  position: relative;
+  top: 107px;
+}
+
+.nav_container {
+  display: flex;align-items: center;justify-content: space-between;
+  height: 100%;
+  width: 90% !important;
+}
+
+.logo {
+  align-items: center;
+  display: flex;
+}
+
+.logo img {
+  height: 40px;
+}
+
+nav {
+  box-shadow: 0 0 20px rgb(0 0 0 / 10%);
+  height: 11vh;
+  max-height: 100px;
+}
+
+.auth-wrapper{
+  height: 60vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.auth-wrapper label {
+  font-weight: 700;
+}
+
+#auth-block{
+  width: 400px;
+}
+
+.form{
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: flex-start;
+}
+
+.form input{
+  width: 100%;
+  padding: 3px;
+  border-radius: 5px;
+  border: 1px solid #000;
+}
+
+.form label {
+  margin-bottom: 5px;
+}

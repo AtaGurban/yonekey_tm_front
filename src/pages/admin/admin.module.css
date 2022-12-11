@@ -52,13 +52,14 @@
 }
 
 .first-sidebar-toggle{
-    width: 10%;
+    width: 8%;
 }
 .admin-logo{
     height: 75px;
 }
 .admin-logo img {
     height: 100%;
+    max-width: 100%;
 }
 .main-menu{
     /* height: 70%; */
@@ -83,4 +84,8 @@
 
 .main-menu li{
     padding: 10px 20px;
+}
+
+.admin-transition{
+    transition: all 300ms linear;
 }

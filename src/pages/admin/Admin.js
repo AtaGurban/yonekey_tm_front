@@ -1,11 +1,27 @@
 import React, { useState } from 'react';
 import styles from "./admin.module.css";
+import AdminTable from './components/AdminTable';
+import ModalAddVideo from './components/ModalAddVideo';
 import SecondSidebarMenu from './components/SecondSidebarMenu';
 import logo from './fav.png'
 
 const Admin = () => {
-    const [firstSidebarToggle, setFirstSidebarToggle] = useState(false)
+    const [firstSidebarToggle, setFirstSidebarToggle] = useState(true)
     const [activeMenu, setActiveMenu] = useState(3)
+    const [adminState, setAdminState] = useState(<AdminTable />)
+
+    const callbackSecondSidebarMenu = (state)=>{
+        switch (state) {
+            case 'Täze wideo goşmak':
+                setAdminState(<ModalAddVideo/>)
+                break;
+        
+            default:
+                setAdminState(<h1>Admin panele ho</h1>)
+                break;
+        }
+        console.log(state);
+    }
 
     const clickMenu = (numberMenu)=>{
         setActiveMenu(numberMenu)
@@ -22,6 +38,7 @@ const Admin = () => {
                         <li onClick={()=>clickMenu(2)} className={`${(activeMenu === 2) && styles['active-menu']}`}><i className="fas fa-weight-hanging"></i><span className={`${(firstSidebarToggle ? 'd-none' : 'ms-3')}`}>Lomay</span></li>
                         <li onClick={()=>clickMenu(3)} className={`${(activeMenu === 3) && styles['active-menu']}`}><i className="fas fa-video"></i><span className={`${(firstSidebarToggle ? 'd-none' : 'ms-3')}`}>Video</span></li>
                         <li onClick={()=>clickMenu(4)} className={`${(activeMenu === 4) && styles['active-menu']}`}><i className="fas fa-comment-dollar"></i><span className={`${(firstSidebarToggle ? 'd-none' : 'ms-3')}`}>Marketing</span></li>
+                        <li onClick={()=>clickMenu(5)} className={`${(activeMenu === 5) && styles['active-menu']}`}><i className="fas fa-user"></i><span className={`${(firstSidebarToggle ? 'd-none' : 'ms-3')}`}>Adminler</span></li>
                     </ul>
                 </div>
                 <div className={`${styles['bottom-block']}`}>
@@ -30,7 +47,10 @@ const Admin = () => {
                 </div>
                 <div ></div>
             </div>
-            <SecondSidebarMenu/>
+            <SecondSidebarMenu callbackSecondSidebarMenu={callbackSecondSidebarMenu} subMenu={activeMenu}/>
+            <div className={`${styles["admin-transition"]}`} style={{width: (firstSidebarToggle) ? '77%' : '67%'}}>
+                {adminState}
+            </div>
         </div>
     );
 };

@@ -1,16 +1,16 @@
 import { observer } from "mobx-react-lite";
 import React, { useContext } from "react";
 import { Navigate, Route, Routes } from "react-router";
-// import { Context } from "..";
+import { Context } from "..";
 import { publicRoutes, adminRoutes, authRoutes } from "../routes";
 
 const AppRouter = observer(() => {
-  // const { user } = useContext(Context);
-
+  const { user } = useContext(Context);
+console.log(user.isAuth);
   return (
     <Routes>
-    {(!false) ? (
-        (("SUPERADMIN" === "ADMIN")|| ("SUPERADMIN" === "SUPERADMIN")) ? (
+    {(user.isAuth) ? (
+        ((user?.user?.role === "ADMIN")|| (user?.user?.role === "SUPERADMIN")) ? (
           adminRoutes.map((route) => (
             <Route
               key={route.path}

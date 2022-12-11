@@ -4,7 +4,7 @@ import Developers from "./pages/developers/Developers";
 import Lomay from "./pages/lomay/Lomay";
 import Main from "./pages/main/Main";
 import Video from "./pages/video/Video";
-import { ADMIN_PAGE, AUTH_PAGE, DEVELOPERS_PAGE, LOMAY_PAGE, MAIN_PAGE, VIDEO_PAGE } from "./utils/pathConsts";
+import { ADMIN_PAGE, DEVELOPERS_PAGE, LOGiN_PAGE, LOMAY_PAGE, MAIN_PAGE, REGISTRATION_PAGE, VIDEO_PAGE } from "./utils/pathConsts";
 
 
 // export const authRoutes = [
@@ -52,7 +52,11 @@ export const publicRoutes = [
         Element: <Video/>
     },
     {
-        path: AUTH_PAGE,
+        path: REGISTRATION_PAGE,
+        Element: <Auth/>
+    },
+    {
+        path: LOGiN_PAGE,
         Element: <Auth/>
     },
 ]

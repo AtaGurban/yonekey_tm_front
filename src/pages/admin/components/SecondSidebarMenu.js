@@ -1,46 +1,55 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { developersMenuItems, lomayMenuItems, marketingMenuItems, usersMenuItems, videoMenuItems } from "../../../utils/menuItems";
 import styles from "./secondSidebarMenu.module.css";
 
-const SecondSidebarMenu = () => {
+const SecondSidebarMenu = ({subMenu, callbackSecondSidebarMenu}) => {
   const [activeMenu, setActiveMenu] = useState(3);
+  const [subMenus, setSubMenus] = useState([])
 
-  const clickMenu = (numberMenu) => {
+  const clickMenu = (numberMenu, state) => {
     setActiveMenu(numberMenu);
+    callbackSecondSidebarMenu(state)
   };
+
+
+  useEffect(()=>{
+    switch (subMenu) {
+      case 1:
+        setSubMenus(developersMenuItems)
+        break;
+      case 2:
+        setSubMenus(lomayMenuItems)
+        break;
+      case 3:
+        setSubMenus(videoMenuItems)
+        break;
+      case 4:
+        setSubMenus(marketingMenuItems)
+        break;
+      case 5:
+        setSubMenus(usersMenuItems)
+        break;
+      default:
+        break;
+    }
+  }, [subMenu])
   return (
 
       <div className={`d-flex flex-column ${styles["second-sidebar"]} `}>
         <hr className={`${styles['top-hr']}`}/>
         <div className={`${styles["second-menu"]}`}>
           <ul>
-            <li
-              onClick={() => clickMenu(1)}
-              className={`${activeMenu === 1 && styles["active-menu"]}`}
-            >
-              <i className="fas fa-code"></i>
-              <span className={`ms-3`}>Developers</span>
-            </li>
-            <li
-              onClick={() => clickMenu(2)}
-              className={`${activeMenu === 2 && styles["active-menu"]}`}
-            >
-              <i className="fas fa-weight-hanging"></i>
-              <span className={`ms-3`}>Lomay</span>
-            </li>
-            <li
-              onClick={() => clickMenu(3)}
-              className={`${activeMenu === 3 && styles["active-menu"]}`}
-            >
-              <i className="fas fa-video"></i>
-              <span className={`ms-3`}>Video</span>
-            </li>
-            <li
-              onClick={() => clickMenu(4)}
-              className={`${activeMenu === 4 && styles["active-menu"]}`}
-            >
-              <i className="fas fa-comment-dollar"></i>
-              <span className={`ms-3`}>Marketing</span>
-            </li>
+            {
+              subMenus.map((i, index)=>
+                <li
+                key={index}
+                onClick={() => clickMenu(index, i)}
+                className={`${activeMenu === index && styles["active-menu"]}`}
+              >
+                <span>{i}</span>
+              </li>
+              )
+            }
           </ul>
         </div>
         <div className={`${styles["bottom-block"]}`}>
