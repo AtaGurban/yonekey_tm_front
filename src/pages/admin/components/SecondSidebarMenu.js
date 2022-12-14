@@ -3,14 +3,13 @@ import { developersMenuItems, lomayMenuItems, marketingMenuItems, usersMenuItems
 import styles from "./secondSidebarMenu.module.css";
 
 const SecondSidebarMenu = ({subMenu, callbackSecondSidebarMenu}) => {
-  const [activeMenu, setActiveMenu] = useState(3);
+  const [activeSubMenu, setActiveSubMenu] = useState(3);
   const [subMenus, setSubMenus] = useState([])
 
   const clickMenu = (numberMenu, state) => {
-    setActiveMenu(numberMenu);
+    setActiveSubMenu(numberMenu);
     callbackSecondSidebarMenu(state)
   };
-
 
   useEffect(()=>{
     switch (subMenu) {
@@ -33,6 +32,10 @@ const SecondSidebarMenu = ({subMenu, callbackSecondSidebarMenu}) => {
         break;
     }
   }, [subMenu])
+
+  useEffect(()=>{
+    clickMenu(0, subMenus[0])
+  }, [subMenus])
   return (
 
       <div className={`d-flex flex-column ${styles["second-sidebar"]} `}>
@@ -44,7 +47,7 @@ const SecondSidebarMenu = ({subMenu, callbackSecondSidebarMenu}) => {
                 <li
                 key={index}
                 onClick={() => clickMenu(index, i)}
-                className={`${activeMenu === index && styles["active-menu"]}`}
+                className={`${activeSubMenu === index && styles["active-menu"]}`}
               >
                 <span>{i}</span>
               </li>

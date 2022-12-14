@@ -15,6 +15,12 @@ const Admin = () => {
             case 'Täze wideo goşmak':
                 setAdminState(<ModalAddVideo/>)
                 break;
+            case 'Wideolaryň sanawy':
+                setAdminState(<AdminTable/>)
+                break;
+            case 'Adminlerin sanawy':
+                setAdminState(<AdminTable/>)
+                break;
         
             default:
                 setAdminState(<h1>Admin panele ho</h1>)
@@ -22,7 +28,6 @@ const Admin = () => {
         }
         console.log(state);
     }
-
     const clickMenu = (numberMenu)=>{
         setActiveMenu(numberMenu)
     }
