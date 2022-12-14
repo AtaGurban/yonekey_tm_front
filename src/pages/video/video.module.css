@@ -135,7 +135,6 @@
     width: 100%;
     height: 100vh;
     display: flex;
-    padding: 30px 70px;
     flex-direction: column;
 }
 .nav-video {
@@ -212,7 +211,7 @@
    width: 100%;
    display: flex;
    align-items: center;
-   justify-content: space-between;
+   justify-content: start;
    flex-wrap: wrap;
    
 }
@@ -220,9 +219,10 @@
     transition: 200ms;
 }
 .content .box {
-    margin: 0px 10px 40px 10px;
+    margin: 0px 15px 40px 15px;
     cursor: pointer;
     width: 280px;
+    height: 256px;
 }
 .content .box img {
 width: 280px;
@@ -232,12 +232,13 @@ border-radius:5px;
     width: 90%;
     font-size: 22px;
     margin-top: 7px;
-
+    min-height: 67px;
 }
 .content .box_name {
     opacity: .6;
     margin-top: 2px;
     font-size: 14px;
+    text-transform: uppercase;
 }
 .content .box:hover{
     transform: scale(0.98);

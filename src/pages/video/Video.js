@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import styles from "./video.module.css";
 import light from "./light.module.css";
 import dark from "./dark.module.css";
@@ -10,11 +10,21 @@ import login from './login.png'
 import lamp from './lamp.png'
 import search from './search.png'
 import bookmark from './bookmark.png'
-import temp from './video.jpg'
+import { Link } from "react-router-dom";
+import { getAllVideos } from "../../http/courseApi";
 
 const Video = () => {
     const [menuToggle, setMenuToggle] = useState(false)
     const [themaMode, setThemaMode] = useState(true)
+    const [videos, setVideos] = useState([])
+    const [active, setActive] = useState(1)
+    const [paginationCount, setPaginationCount] = useState(1)
+    console.log(videos);
+    useEffect(()=>{
+      (async function(){
+          await getAllVideos(active).then((data) => {setVideos(data.rows); setPaginationCount(data.count)});
+      })()
+  }, [active] )
   return (
     <div  className={`${styles["video-body"]} ${(themaMode ? light : dark)["video-body"]}`}>
       <div className={`${styles["blur"]}`}></div>
@@ -26,28 +36,33 @@ const Video = () => {
         <div className={`${styles["menu_navigation"]}`}>
           <ul>
             <li>
-              <a href="#">
+              <Link to={'/'}>
                 <img src={home} alt="Esasy Sahypa" />
                 Esasy Sahypa
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#">
+              <Link to={'#'}>
                 <img src={heart} alt="Halanlarym" />
                 Halanlarym
-              </a>
+              </Link>
             </li>
-            <li>
-              <a href="#">
+            <li> 
+              <Link to={'#'}>
                 <img src={history} alt="Gorenlerim" />
                 Görenlerim
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
-        <div style={{color:'#FFF'}} className={`${styles["log_in_button"]}`}  id={`${styles["log_in_button"]}`}>
+        <div className="mt-auto">
+
+        <Link to={'/login'}>
+        <div style={{color:'#FFF'}}  className={`${styles["log_in_button"]}`}  id={`${styles["log_in_button"]}`}>
           <img src={login} alt="LogIN" id={`${styles["log_in"]}`} />
           IÇINE GIR
+        </div>
+        </Link>
         </div>
       </div>
       <div className={`${styles["wrapper"]}`}>
@@ -76,26 +91,17 @@ const Video = () => {
             <h2 className="fs-5">KÖP GÖRÜLENLER</h2>
         </div>
         <div className={`${styles["content"]}`}>
-          <div className={`${styles["box"]}`}>
-            <img src={temp} alt="Video" />
-            <div className={`${styles["box_head"]}`}>Nädip 200 manat gazanmaly?</div>
-            <div className={`${styles["box_name"]}`}>KESHA REJEPOW</div>
-          </div>
-          <div className={`${styles["box"]}`}>
-            <img src={temp} alt="Video" />
-            <div className={`${styles["box_head"]}`}>Nädip 200 manat gazanmaly?</div>
-            <div className={`${styles["box_name"]}`}>KESHA REJEPOW</div>
-          </div>
-          <div className={`${styles["box"]}`}>
-            <img src={temp} alt="Video" />
-            <div className={`${styles["box_head"]}`}>Nädip 200 manat gazanmaly?</div>
-            <div className={`${styles["box_name"]}`}>KESHA REJEPOW</div>
-          </div>
-          <div className={`${styles["box"]}`}>
-            <img src={temp} alt="Video" />
-            <div className={`${styles["box_head"]}`}>Nädip 200 manat gazanmaly?</div>
-            <div className={`${styles["box_name"]}`}>KESHA REJEPOW</div>
-          </div>
+          {
+            videos.map((i)=>
+              <Link to={`/stream/${i.id}`}>
+                <div key={i.id} className={`${styles["box"]}`}>
+                <img src={`${process.env.REACT_APP_API_URL}api/static/${i.img}`} alt="Video" />
+                <div className={`${styles["box_head"]}`}>{i.name}</div>
+                <div className={`${styles["box_name"]}`}>{i.author}</div>
+              </div>
+              </Link>
+            )
+          }
 
         </div>
         </div>

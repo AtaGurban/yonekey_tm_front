@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
 import { Button, Form } from "react-bootstrap";
 import { createVideo } from "../../../http/courseApi";
 
@@ -9,6 +8,7 @@ function ModalAddVideo() {
   const [loaderPercent, setLoaderPercent] = useState(0);
   const [loaderClass, setLoaderClass] = useState("progress d-none");
   const [loaderClassPercent, setLoaderClassPercent] = useState("ms-2 d-none");
+  const [author, setAuthor] = useState('')
   const [img, setImg] = useState(null);
   const [video, setVideo] = useState(null);
 
@@ -48,6 +48,7 @@ function ModalAddVideo() {
   const addCourse = async () => {
     const formData = new FormData();
     formData.append("name", name);
+    formData.append("author", author);
     for (let i = 0; i < files.length; i++) {
       if (files[i].file !== "") {
         let file = files[i];
@@ -103,6 +104,12 @@ function ModalAddVideo() {
               className="my-2"
               type="text"
               onChange={(e) => setName(e.target.value)}
+            />
+            <span className="c-bold">Awtoryň ady</span>
+            <Form.Control
+              className="my-2"
+              type="text"
+              onChange={(e) => setAuthor(e.target.value)}
             />
             <span className="c-bold">Surat Saýla</span>
             <Form.Control

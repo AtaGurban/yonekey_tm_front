@@ -35,7 +35,7 @@ const Admin = () => {
         <div className={`${styles["admin"]} d-flex w-100`}>
             <div className={`${styles["blur"]}`}></div>
             <div className={`d-flex flex-column ${styles['first-sidebar']} ${styles[(firstSidebarToggle) && 'first-sidebar-toggle']} ${(firstSidebarToggle) && 'text-center'}`}>
-                <div className={`${styles["admin-logo"]} text-center m-3`}><img  src={logo}/></div>
+                <div className={`${styles["admin-logo"]} text-center m-3`}><img alt='' src={logo}/></div>
                 <hr/>
                 <div className={`${styles["main-menu"]}`}>
                     <ul>
