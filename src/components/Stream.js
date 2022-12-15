@@ -1,39 +1,37 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
-import { getFilesByVideoId, getOneCourseAndVideo } from '../http/courseApi';
+import { useParams } from 'react-router-dom';
+import { getFilesByVideoId, getOneVideo } from '../http/courseApi';
 import Navbar from './Navbar';
-import Footer from './Footer/Footer';
 import { MoonLoader } from 'react-spinners'
 
 
 const Stream = () => {
   const params = useParams();
   const [quality, setQuality] = useState(720)
-  const [course, setCourse] = useState({})
+  const [video, setVideo] = useState({})
   const [files, setFiles] = useState([])
-
   const [loading, setLoading] = useState(true)
 
 
   useEffect(() => {
     (async function () {
-      await getOneCourseAndVideo(params.id).then((data) => { setCourse(data.video)}).finally(() => setLoading(false));
-      await getFilesByVideoId(params.id).then((data) => { setFiles(data) })
+      await getOneVideo(params.id).then((data) => { setVideo(data)});
+      await getFilesByVideoId(params.id).then((data) => { setFiles(data) }).finally(() => setLoading(false))
     })();
   }, [params]);
-
+  console.log(video);
   if (loading) {
     return (
       <div style={{ alignItems: 'center', justifyContent: 'center', height: '100vh' }} className='d-flex'>
         <MoonLoader color="#000000" />
       </div>)
   }
-  console.log(files);
+
   return (
     <div>
       <Navbar />
       <div className="wrapper">
-        <div className="navigation"><h3>{course.course.name} / {course.name}</h3></div>
+        <div className="navigation"><h3>{video.author} / {video.name}</h3></div>
         <div className="container container_video">
           <video
             controls

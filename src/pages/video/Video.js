@@ -87,13 +87,13 @@ const Video = () => {
         <div className="container">
 
         <div style={{height:'30px'}} className="mb-3 d-flex align-items-center">
-            <img className="me-2" src={bookmark}/>
+            <img className="me-2" src={bookmark} alt=''/>
             <h2 className="fs-5">KÖP GÖRÜLENLER</h2>
         </div>
         <div className={`${styles["content"]}`}>
           {
             videos.map((i)=>
-              <Link to={`/stream/${i.id}`}>
+              <Link to={`/video/stream/${i.id}`}>
                 <div key={i.id} className={`${styles["box"]}`}>
                 <img src={`${process.env.REACT_APP_API_URL}api/static/${i.img}`} alt="Video" />
                 <div className={`${styles["box_head"]}`}>{i.name}</div>

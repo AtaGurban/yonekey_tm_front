@@ -69,3 +69,39 @@ nav {
 .form label {
   margin-bottom: 5px;
 }
+
+.wrapper {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.container_video {
+  display: flex;flex-direction: column;align-items: center;
+  /* height: 480px; */
+  z-index: 10;
+  width: 60%;
+}
+
+@media screen and (max-width:768px) {
+  .container_video {
+    width: 95%;
+  }
+}
+
+.file-block{
+  max-height: 25px;
+  overflow: hidden;
+}
+
+video{
+  width: 100%;
+}
+
+.navigation h3 {
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin: 20px 0px 20px 0px;
+  text-align: center;
+  text-transform: uppercase;
+}

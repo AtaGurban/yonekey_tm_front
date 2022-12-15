@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styles from "./admin.module.css";
-import AdminTable from './components/AdminTable';
+import AdminTableUsers from './components/AdminTableUsers';
+import AdminTableVideo from './components/AdminTableVideo';
 import ModalAddVideo from './components/ModalAddVideo';
 import SecondSidebarMenu from './components/SecondSidebarMenu';
 import logo from './fav.png'
@@ -8,18 +9,27 @@ import logo from './fav.png'
 const Admin = () => {
     const [firstSidebarToggle, setFirstSidebarToggle] = useState(true)
     const [activeMenu, setActiveMenu] = useState(3)
-    const [adminState, setAdminState] = useState(<AdminTable />)
 
-    const callbackSecondSidebarMenu = (state)=>{
+    const [adminState, setAdminState] = useState(<AdminTableVideo />)
+
+    // const bodyDataForVideoList = (data)=>{
+    //     let arr = []
+    //     data.map((i)=>{
+    //         arr = [...arr, [i.id, i.name, i.author, i.createdAt]]
+    //     })
+    //     return arr
+    // }
+
+    const callbackSecondSidebarMenu = async(state)=>{
         switch (state) {
             case 'Täze wideo goşmak':
                 setAdminState(<ModalAddVideo/>)
                 break;
             case 'Wideolaryň sanawy':
-                setAdminState(<AdminTable/>)
+                setAdminState(<AdminTableVideo/>)
                 break;
             case 'Adminlerin sanawy':
-                setAdminState(<AdminTable/>)
+                setAdminState(<AdminTableUsers/>)
                 break;
         
             default:

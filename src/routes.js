@@ -1,19 +1,12 @@
+import Stream from "./components/Stream";
 import Admin from "./pages/admin/Admin";
 import Auth from "./pages/auth/Auth";
 import Developers from "./pages/developers/Developers";
 import Lomay from "./pages/lomay/Lomay";
 import Main from "./pages/main/Main";
 import Video from "./pages/video/Video";
-import { ADMIN_PAGE, DEVELOPERS_PAGE, LOGiN_PAGE, LOMAY_PAGE, MAIN_PAGE, REGISTRATION_PAGE, VIDEO_PAGE } from "./utils/pathConsts";
+import { ADMIN_PAGE, DEVELOPERS_PAGE, LOGiN_PAGE, LOMAY_PAGE, MAIN_PAGE, REGISTRATION_PAGE, VIDEO_PAGE, VIDEO_STREAM_PAGE } from "./utils/pathConsts";
 
-
-// export const authRoutes = [
-//     {
-//         path: BASKET_ROUTE,
-//         Element: <Basket/>
-//     },
-
-// ]
 
 export const authRoutes = [
     {
@@ -31,6 +24,10 @@ export const authRoutes = [
     {
         path: VIDEO_PAGE,
         Element: <Video/>
+    },
+    {
+        path: `${VIDEO_STREAM_PAGE}/:id`,
+        Element: <Stream/>
     },
 
 ]
@@ -59,6 +56,10 @@ export const publicRoutes = [
         path: LOGiN_PAGE,
         Element: <Auth/>
     },
+    {
+        path: `${VIDEO_STREAM_PAGE}/:id`,
+        Element: <Stream/>
+    },
 ]
 export const adminRoutes = [
     {
@@ -80,6 +81,10 @@ export const adminRoutes = [
     {
         path: ADMIN_PAGE,
         Element: <Admin/>
+    },
+    {
+        path: `${VIDEO_STREAM_PAGE}/:id`,
+        Element: <Stream/>
     },
 ]
 
