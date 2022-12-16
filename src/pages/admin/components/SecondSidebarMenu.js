@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { developersMenuItems, lomayMenuItems, marketingMenuItems, usersMenuItems, videoMenuItems } from "../../../utils/menuItems";
+import { bannersMenuItems, lomayMenuItems, marketingMenuItems, usersMenuItems, videoMenuItems } from "../../../utils/menuItems";
 import styles from "./secondSidebarMenu.module.css";
 
 const SecondSidebarMenu = ({subMenu, callbackSecondSidebarMenu}) => {
@@ -14,7 +14,7 @@ const SecondSidebarMenu = ({subMenu, callbackSecondSidebarMenu}) => {
   useEffect(()=>{
     switch (subMenu) {
       case 1:
-        setSubMenus(developersMenuItems)
+        setSubMenus(bannersMenuItems)
         break;
       case 2:
         setSubMenus(lomayMenuItems)

@@ -22,9 +22,7 @@ const AdminTableVideo = observer(() => {
       setRemoveBtn('d-none')
     }
   }, []);
-  if (user.user.role !== 'SUPERADMIN'){
-    setRemoveBtn('d-none')
-  }
+
   const removeVideoFunc = async(id)=>{
     if (user.user.role === 'SUPERADMIN'){
       await removeVideo(id).then((data)=> window.location.reload())
@@ -39,7 +37,7 @@ const AdminTableVideo = observer(() => {
       setVideoList(data.rows);
     });
   }
-  console.log(videoList);
+
   return (
     <div className="admin-table w-100 p-3 mt-4 text-center">
       <ModalEditVideo updateState={updateState} video={currentVideo} show={modalEditCourseVisible} onHide={() => setModalEditCourseVisible(false)}/>

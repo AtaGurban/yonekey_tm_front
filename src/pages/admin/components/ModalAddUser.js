@@ -1,36 +1,36 @@
 import { React, useState, useEffect, useContext } from "react";
 import { Button, Form, Modal, Dropdown } from "react-bootstrap";
 import { Context } from "../../..";
-import { update } from "../../../http/userAPI";
+import { createUserByAdmin } from "../../../http/userAPI";
 
-const ModalEditUser = ({ show, onHide, editedUser, updateState }) => {
+const ModalAddUser = ({ show, onHide, updateState }) => {
   const [userName, setUserName] = useState("");
   const [userPassword, setUserPassword] = useState("");
   const [dropRole, setDropRole] = useState('')
-  const [dropdownClass, setDropdownClass] = useState('mb-3')
+  const [phone, setPhone] = useState('')
+  const [email, setEmail] = useState('')
   const {user} = useContext(Context)
 
-  const updateUser = async () => {
-    if ((user.user.role === 'ADMIN') && (editedUser.role === 'SUPERADMIN')){
-      return alert('Siziň bu ulanyjy bilen işiňiz bolmasyn')
+  const createUser = async () => {
+    if ((user.user.role !== 'SUPERADMIN')){
+      return alert('Bu bölüm size degişli däl')
     }
     const formData = new FormData();
-    if (user.user.role === 'ADMIN'){
-      formData.append("role", editedUser?.role);
-    } else if(user.user.role === 'SUPERADMIN'){
-      formData.append("role", dropRole);
-    }
-    formData.append("id", editedUser.id);
-    formData.append("userName", userName);
-    formData.append("userPassword", userPassword);
-
-
-    await update(formData).then((data) => {
+    formData.append("role", dropRole);
+    formData.append("name", userName);
+    formData.append("email", email);
+    formData.append("phone", phone);
+    formData.append("password", userPassword);
+    console.log(formData);
+    await createUserByAdmin(formData).then((data) => {
       try {
         onHide();
         updateState();
         alert("Üstünlikli ýerine ýetirildi");
         setUserPassword('')
+        setEmail('')
+        setPhone('')
+        setUserName('')
       } catch (error) {
         console.log(error);
         alert("error");
@@ -38,13 +38,6 @@ const ModalEditUser = ({ show, onHide, editedUser, updateState }) => {
     });
   };
 
-  useEffect(() => {
-    setUserName(editedUser?.first_name);
-    setDropRole(editedUser?.role);
-    if (user.user.role !== 'SUPERADMIN'){
-      setDropdownClass('d-none')
-    }
-  }, [editedUser]);
   const roles = ['USER', 'ADMIN', 'SUPERADMIN']
 
   return (
@@ -52,7 +45,7 @@ const ModalEditUser = ({ show, onHide, editedUser, updateState }) => {
       <Modal show={show} onHide={onHide} size="lg" centered>
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
-            {editedUser?.first_name} ulanyjyny üýtgetmek
+            Täze ulanyjyny goşmak
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
@@ -64,17 +57,31 @@ const ModalEditUser = ({ show, onHide, editedUser, updateState }) => {
               onChange={(e) => setUserName(e.target.value)}
               placeholder={"Ulanyjynyň ady"}
             />
-            <span className="mt-3 c-bold">Ulanyjynyň parolyny üýtget</span>
+            <span className="mt-3 c-bold">Ulanyja parol ber</span>
             <Form.Control
               className="my-3"
               type='password'
               value={userPassword}
               onChange={(e) => setUserPassword(e.target.value)}
-              placeholder={"Ulanyjynyň parolyny üýtget"}
+              placeholder={"Ulanyja parol ber"}
+            />
+            <span className="mt-3 c-bold">Ulanyjynyň telefony</span>
+            <Form.Control
+              className="my-3"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+              placeholder={"Ulanyjynyň telefony"}
+            />
+            <span className="mt-3 c-bold">Ulanyjynyň email</span>
+            <Form.Control
+              className="my-3"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder={"Ulanyjynyň email"}
             />
             <hr />
           </Form>
-          <Dropdown className={dropdownClass}>
+          <Dropdown className={'mb-3'}>
             <Dropdown.Toggle>
               {dropRole || "Ulanyjynyň rolyny saýlaň"}
             </Dropdown.Toggle>
@@ -91,8 +98,8 @@ const ModalEditUser = ({ show, onHide, editedUser, updateState }) => {
           <Button variant={"outline-danger"} onClick={onHide}>
             Ýap
           </Button>
-          <Button variant={"outline-success"} onClick={updateUser}>
-            Üýtget
+          <Button variant={"outline-success"} onClick={createUser}>
+            Goş
           </Button>
         </Modal.Footer>
       </Modal>
@@ -100,4 +107,4 @@ const ModalEditUser = ({ show, onHide, editedUser, updateState }) => {
   );
 };
 
-export default ModalEditUser;
+export default ModalAddUser;

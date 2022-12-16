@@ -3,5 +3,8 @@ export const listVideos = [
 ]
 
 export const listUsers = [
-    'Id', 'Ady', 'Adminlik derejesi', 'Döredilen wagty', 'Düwmeler'
+    'Id', 'Ady', 'Adminlik derejesi', 'Telefon',  'Döredilen wagty', 'Düwmeler'
+]
+export const listBanners = [
+    'Id', 'Degişli sahypasy', 'Döredilen wagty', 'Düwmeler'
 ]

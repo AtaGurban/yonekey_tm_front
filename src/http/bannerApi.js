@@ -10,6 +10,11 @@ export const getBanner = async ()=>{
     return data
 }
 
+export const getBannerByPage = async (page)=>{
+    const {data} = await $host.get(`api/banner?page=${page}`)
+    return data
+}
+
 export const deleteBanner = async (id)=>{
     const {data} = await $authhost.delete(`api/admin/banner?id=${id}`)
     return data

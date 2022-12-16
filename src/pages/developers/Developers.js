@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from "./developers.module.css";
 import logo from './logo.png'
 import first from './1.webp'
@@ -25,14 +25,33 @@ import section_5 from './section_5.jpg'
 import tel from './tel.png'
 import mail from './mail.png'
 import instagram from './instagram.png'
+import { MoonLoader } from 'react-spinners';
+import { getBannerByPage } from '../../http/bannerApi';
 
 
 const Developers = () => {
+    const [loading, setLoading] = useState(true)
+    const [banner, setBanner] = useState({})
+    useEffect(()=>{ 
+        (async function(){
+   
+         await getBannerByPage('Developers').then(async data => {
+            setBanner(data)
+         }).finally(() => setLoading(false))
+       })();
+     }, []) 
+     console.log(banner);
+    if(loading){
+        return (
+          <div style={{alignItems: 'center',  justifyContent: 'center', height: '100vh'}} className='d-flex'>
+          <MoonLoader color="#000000" />
+        </div>)
+      }
     return (
         <div className={`${styles["body"]}`}>
             <nav className={`${styles["nav"]}`}><img src={logo} alt=""/></nav>
             <div className={`${styles["wrapper"]}`}>
-        <header className={`${styles["header"]}`}>
+        <header style={{backgroundImage: `url(${process.env.REACT_APP_API_URL}api/static/${banner.img})`}} className={`${styles["header"]}`}>
             <div className={`${styles["header__content"]}`}>
                 <h1 className={`${styles["h1"]}`}>Öz biznesiňi şügünden başlap tutuş onlaýn geçir we söwdany köpelt<br/>"ÝÖNEKEÝ DEVELOPER"</h1>
                 <a href="#sign" className={`${styles["a_href"]}`}>Başlamak!</a>

@@ -1,82 +1,52 @@
 import { observer } from "mobx-react-lite";
 import React, { useEffect, useState, useContext } from "react";
-import { Pagination } from "react-bootstrap";
 import Table from "react-bootstrap/Table";
-import { getAllUsers, removeUser } from "../../../http/userAPI";
+import { getBanner } from "../../../http/bannerApi";
+
 import { Context } from "../../../index";
-import { listUsers } from "../../../utils/adminHeads";
-import ModalAddUser from "./ModalAddUser";
+import { listBanners } from "../../../utils/adminHeads";
+import ModalAddBanner from "./ModalAddBanner";
 import ModalEditUser from "./ModalEditUser";
 
-const AdminTableUsers = observer(() => {
-  const [users, setUsers] = useState([]);
-  const [active, setActive] = useState(1);
-  const [removeBtn, setRemoveBtn] = useState("btn btn-danger");
-  const [addBtn, setAddBtn] = useState("ms-auto text-end mb-3");
-  const [paginationCount, setPaginationCount] = useState(1);
+const AdminTableBanner = observer(() => {
+  const [banners, setBanners] = useState([]);
   const [modalEditUserVisible, setModalEditUserVisible] = useState(false);
   const [modalAddUserVisible, setModalAddUserVisible] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
   const { user } = useContext(Context);
-
+  console.log(banners);
   useEffect(() => {
     (async function () {
-      await getAllUsers(active).then((data) => {
-        setUsers(data.rows);
-        setPaginationCount(data.count);
+      await getBanner().then((data) => {
+        setBanners(data);
       });
     })();
-    if (user.user.role !== "SUPERADMIN") {
-      setRemoveBtn("d-none");
-      setAddBtn("d-none");
-    }
-  }, [active]);
+  }, []);
 
   const removeUserFunc = async (id) => {
     if (user.user.role === "SUPERADMIN") {
-      await removeUser(id).then(async (data) => {
-        await getAllUsers(active).then((data) => {
-          setUsers(data.rows);
-          setPaginationCount(data.count);
-        });
-        alert("Üstünlikli ýerine ýetirildi");
-      });
+
     }
   };
   const editUser = (user) => {
-    console.log(user);
     setCurrentUser(user);
     setModalEditUserVisible(true);
   };
-  let items = [];
-  for (let number = 1; number <= Math.ceil(paginationCount / 10); number++) {
-    items.push(
-      <Pagination.Item
-        onClick={() => setActive(number)}
-        key={number}
-        active={number === active}
-      >
-        {number}
-      </Pagination.Item>
-    );
-  }
+
   const updateState = async () => {
-    await getAllUsers(active).then((data) => {
-      setUsers(data.rows);
-      setPaginationCount(data.count);
-    });
+
   };
   return (
     <div className="admin-table w-100 p-3 mt-4 text-center">
-      <div className={addBtn}>
+      <div className="ms-auto text-end mb-3">
         <button
           onClick={() => setModalAddUserVisible(true)}
           className="btn btn-warning"
         >
-          Täze admin goşmak
+          Täze banner goşmak
         </button>
       </div>
-      <ModalAddUser
+      <ModalAddBanner
         updateState={updateState}
         show={modalAddUserVisible}
         onHide={() => setModalAddUserVisible(false)}
@@ -90,18 +60,16 @@ const AdminTableUsers = observer(() => {
       <Table bordered hover responsive>
         <thead>
           <tr>
-            {listUsers?.map((i, index) => (
+            {listBanners?.map((i, index) => (
               <th key={index}>{i}</th>
             ))}
           </tr>
         </thead>
         <tbody>
-          {users?.map((i, index) => (
+          {banners?.map((i, index) => (
             <tr key={index}>
               <td>{i.id}</td>
-              <td>{i.first_name}</td>
-              <td>{i.role}</td>
-              <td>{i.phone}</td>
+              <td>{i.page}</td>
               <td>{i.createdAt}</td>
               <td>
                 {
@@ -116,7 +84,7 @@ const AdminTableUsers = observer(() => {
                     <button
                       onClick={() => removeUserFunc(i.id)}
                       disabled={user.user.role !== "SUPERADMIN"}
-                      className={removeBtn}
+                      className='btn btn-danger'
                       title="Pozmak"
                     >
                       <i className="fas fa-trash-alt"></i>
@@ -128,13 +96,8 @@ const AdminTableUsers = observer(() => {
           ))}
         </tbody>
       </Table>
-      <div className="container mt-5">
-        <Pagination className="justify-content-center" size="lg">
-          {items}
-        </Pagination>
-      </div>
     </div>
   );
 });
 
-export default AdminTableUsers;
+export default AdminTableBanner;
