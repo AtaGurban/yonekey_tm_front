@@ -1,3 +1,12 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  text-decoration: none;
+  list-style: none;
+}
+
 body{
   margin: 0;
   padding: 0;
@@ -105,3 +114,28 @@ video{
   text-align: center;
   text-transform: uppercase;
 }
+
+.navbar-main{
+  height: 95px;
+}
+
+.navbar-logo{
+  height: 100%;
+}
+
+.navbar-logo img{
+  height: 45px;
+  object-fit: contain;
+  width: 100%;
+}
+
+.navbar-logo-icons{
+  height: 100%;
+  font-size: 1.7rem;
+}
+
+a{
+  color: #000 !important;
+}
+
+

@@ -4,8 +4,8 @@ export const videoMenuItems = [
 export const bannersMenuItems = [
     'Baş bannerler'
 ]
-export const lomayMenuItems = [
-    
+export const mainPageMenuItems = [
+    'Biznesler'
 ]
 export const marketingMenuItems = [
     

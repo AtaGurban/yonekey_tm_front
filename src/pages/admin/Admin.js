@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { Context } from "../..";
 import styles from "./admin.module.css";
 import AdminTableBanner from "./components/AdminTableBanners";
+import AdminTableBusiness from "./components/AdminTableBusiness";
 import AdminTableUsers from "./components/AdminTableUsers";
 import AdminTableVideo from "./components/AdminTableVideo";
 import ModalAddVideo from "./components/ModalAddVideo";
@@ -34,6 +35,9 @@ const Admin = () => {
       case "Baş bannerler":
         setAdminState(<AdminTableBanner />);
         break;
+      case "Biznesler":
+        setAdminState(<AdminTableBusiness />);
+        break;
 
       default:
         setAdminState(
@@ -43,7 +47,6 @@ const Admin = () => {
         );
         break;
     }
-    console.log(state);
   };
   const clickMenu = (numberMenu) => {
     setActiveMenu(numberMenu);
@@ -74,12 +77,12 @@ const Admin = () => {
             </li>
             <li
               onClick={() => clickMenu(2)}
-              title='Lomay'
+              title='Baş sahypa'
               className={`${activeMenu === 2 && styles["active-menu"]}`}
             >
               <i className="fas fa-weight-hanging"></i>
               <span className={`${firstSidebarToggle ? "d-none" : "ms-3"}`}>
-                Lomay
+                Baş sahypa
               </span>
             </li>
             <li

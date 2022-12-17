@@ -3,19 +3,19 @@ import React, { useEffect, useState, useContext } from "react";
 import Table from "react-bootstrap/Table";
 import { deleteBanner, getBanner } from "../../../http/bannerApi";
 import { Context } from "../../../index";
-import { listBanners } from "../../../utils/adminHeads";
+import {  listBusiness } from "../../../utils/adminHeads";
 import ModalAddBanner from "./ModalAddBanner";
 
 
-const AdminTableBanner = observer(() => {
-  const [banners, setBanners] = useState([]);
-  const [modalAddUserVisible, setModalAddUserVisible] = useState(false);
+const AdminTableBusiness = observer(() => {
+  const [business, setBusiness] = useState([]);
+  const [modalAddBusinessVisible, setModalAddBusinessVisible] = useState(false);
   const { user } = useContext(Context);
 
   useEffect(() => {
     (async function () {
       await getBanner().then((data) => {
-        setBanners(data);
+        setBusiness(data);
       });
     })();
   }, []);
@@ -27,7 +27,7 @@ const AdminTableBanner = observer(() => {
   };
   const updateState = async () => {
     await getBanner().then((data) => {
-      setBanners(data);
+      setBusiness(data);
     });
   };
   return (
@@ -35,7 +35,7 @@ const AdminTableBanner = observer(() => {
       <div className="ms-auto text-end mb-3">
         <button
           updateState={updateState}
-          onClick={() => setModalAddUserVisible(true)}
+          onClick={() => setModalAddBusinessVisible(true)}
           className="btn btn-warning"
         >
           Täze banner goşmak
@@ -43,19 +43,19 @@ const AdminTableBanner = observer(() => {
       </div>
       <ModalAddBanner
         updateState={updateState}
-        show={modalAddUserVisible}
-        onHide={() => setModalAddUserVisible(false)}
+        show={modalAddBusinessVisible}
+        onHide={() => setModalAddBusinessVisible(false)}
       />
       <Table bordered hover responsive>
         <thead>
           <tr>
-            {listBanners?.map((i, index) => (
+            {listBusiness?.map((i, index) => (
               <th key={index}>{i}</th>
             ))}
           </tr>
         </thead>
         <tbody>
-          {banners?.map((i, index) => (
+          {business?.map((i, index) => (
             <tr key={index}>
               <td>{i.id}</td>
               <td>{i.page}</td>
@@ -82,4 +82,4 @@ const AdminTableBanner = observer(() => {
   );
 });
 
-export default AdminTableBanner;
+export default AdminTableBusiness;

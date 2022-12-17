@@ -1,5 +1,4 @@
 import axios from 'axios'
-console.log(process.env.REACT_APP_API_URL);
 const $host = axios.create({
     baseURL: process.env.REACT_APP_API_URL
 }) 
@@ -10,9 +9,7 @@ const $authhost = axios.create({
 
 const authInterceptor = config =>{
     config.headers.authorization = `Bearer ${localStorage.getItem('token')}`
-    
     return config
-    
 }
 
 $authhost.interceptors.request.use(authInterceptor)

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./lomay.module.css";
 import video from './header.mp4'
 import logo from './logo.png'
@@ -12,13 +12,37 @@ import section_5 from './section_5.webp'
 import tel from './tel.png'
 import mail from './mail.png'
 import instagram from './instagram.png'
+import { getBannerByPage } from "../../http/bannerApi";
+import { MoonLoader } from "react-spinners";
 
 const Lomay = () => {
+  const [headerClass, setHeaderClass] = useState({})
+  const [videoClass, setVideoClass] = useState('')
+  const [banner, setBanner] = useState({})
+  const [loading, setLoading] = useState(true)
+  useEffect(()=>{ 
+    (async function(){
+     await getBannerByPage('Lomay').then(async data => {
+        setBanner(data)
+        if (data){
+          setHeaderClass({backgroundImage: `url(${process.env.REACT_APP_API_URL}api/static/${data.img})`})
+          setVideoClass('d-none')
+        }
+     }).finally(() => setLoading(false))
+   })();
+ }, []) 
+
+ if(loading){
+  return (
+    <div style={{alignItems: 'center',  justifyContent: 'center', height: '100vh'}} className='d-flex'>
+    <MoonLoader color="#000000" />
+  </div>)
+}
   return (
     <div className={`${styles["lomay-body"]}`}>
       <div className={`${styles["wrapper"]}`}>
-        <header className={`${styles["header-lomay"]}`}>
-          <video autoPlay muted loop id={`${styles["video"]}`}>
+        <header style={headerClass} className={`${styles["header-lomay"]}`}>
+          <video className={videoClass} autoPlay muted loop id={`${styles["video"]}`}>
             <source src={video} type="video/mp4" />
           </video>
           <div className={`${styles["logo"]}`}>

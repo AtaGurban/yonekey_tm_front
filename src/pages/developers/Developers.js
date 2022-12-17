@@ -32,15 +32,19 @@ import { getBannerByPage } from '../../http/bannerApi';
 const Developers = () => {
     const [loading, setLoading] = useState(true)
     const [banner, setBanner] = useState({})
+    const [bannerClass, setBannerClass] = useState({})
     useEffect(()=>{ 
         (async function(){
-   
          await getBannerByPage('Developers').then(async data => {
             setBanner(data)
+            console.log(data);
+            if (data){
+                setBannerClass({backgroundImage: `url(${process.env.REACT_APP_API_URL}api/static/${data.img})`})
+            }
          }).finally(() => setLoading(false))
        })();
-     }, []) 
-     console.log(banner);
+     }, [])
+
     if(loading){
         return (
           <div style={{alignItems: 'center',  justifyContent: 'center', height: '100vh'}} className='d-flex'>
@@ -51,7 +55,7 @@ const Developers = () => {
         <div className={`${styles["body"]}`}>
             <nav className={`${styles["nav"]}`}><img src={logo} alt=""/></nav>
             <div className={`${styles["wrapper"]}`}>
-        <header style={{backgroundImage: `url(${process.env.REACT_APP_API_URL}api/static/${banner.img})`}} className={`${styles["header"]}`}>
+        <header style={bannerClass} className={`${styles["header"]}`}>
             <div className={`${styles["header__content"]}`}>
                 <h1 className={`${styles["h1"]}`}>Öz biznesiňi şügünden başlap tutuş onlaýn geçir we söwdany köpelt<br/>"ÝÖNEKEÝ DEVELOPER"</h1>
                 <a href="#sign" className={`${styles["a_href"]}`}>Başlamak!</a>

@@ -1,13 +1,13 @@
-import { React, useState, useEffect, useContext } from "react";
+import { React, useState } from "react";
 import { Button, Form, Modal, Dropdown } from "react-bootstrap";
-import { Context } from "../../..";
+
 import { createBanner } from "../../../http/bannerApi";
 
 const ModalAddBanner = ({ show, onHide, updateState }) => {
   const [banner, setBanner] = useState(null);
   const [dropPage, setDropPage] = useState('')
 
-  const {user} = useContext(Context)
+
 
   const selectFileBanner = (e) => {
     setBanner(e.target.files[0]);
@@ -21,7 +21,7 @@ const ModalAddBanner = ({ show, onHide, updateState }) => {
     await createBanner(formData).then((data) => {
       try {
         onHide();
-        // updateState();
+        updateState();
         alert("Üstünlikli ýerine ýetirildi");
       } catch (error) {
         console.log(error);

@@ -8,3 +8,6 @@ export const listUsers = [
 export const listBanners = [
     'Id', 'Degişli sahypasy', 'Döredilen wagty', 'Düwmeler'
 ]
+export const listBusiness = [
+    'Id', 'Ady', 'Ssylkasy', 'Döredilen wagty', 'Düwmeler'
+]

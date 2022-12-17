@@ -5,7 +5,6 @@ import { $authhost, $host } from ".";
 export const createVideo = async (item, options)=>{
     const {data} = await $authhost.post('api/admin/create-video', item, options)
     return data
-
 }
 
 
