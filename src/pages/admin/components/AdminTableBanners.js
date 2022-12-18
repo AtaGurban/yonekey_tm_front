@@ -2,6 +2,7 @@ import { observer } from "mobx-react-lite";
 import React, { useEffect, useState, useContext } from "react";
 import Table from "react-bootstrap/Table";
 import { deleteBanner, getBanner } from "../../../http/bannerApi";
+import { getBusiness } from "../../../http/mainPageApi";
 import { Context } from "../../../index";
 import { listBanners } from "../../../utils/adminHeads";
 import ModalAddBanner from "./ModalAddBanner";
@@ -9,6 +10,7 @@ import ModalAddBanner from "./ModalAddBanner";
 
 const AdminTableBanner = observer(() => {
   const [banners, setBanners] = useState([]);
+  const [business, setBusiness] = useState([]);
   const [modalAddUserVisible, setModalAddUserVisible] = useState(false);
   const { user } = useContext(Context);
 
@@ -16,6 +18,9 @@ const AdminTableBanner = observer(() => {
     (async function () {
       await getBanner().then((data) => {
         setBanners(data);
+      });
+      await getBusiness().then((data) => {
+        setBusiness(data);
       });
     })();
   }, []);
@@ -30,6 +35,7 @@ const AdminTableBanner = observer(() => {
       setBanners(data);
     });
   };
+
   return (
     <div className="admin-table w-100 p-3 mt-4 text-center">
       <div className="ms-auto text-end mb-3">
@@ -42,6 +48,7 @@ const AdminTableBanner = observer(() => {
         </button>
       </div>
       <ModalAddBanner
+        business={business}
         updateState={updateState}
         show={modalAddUserVisible}
         onHide={() => setModalAddUserVisible(false)}

@@ -46,7 +46,7 @@
     font-size: 1.2rem;
     border-radius: 10px;
     background: #E42919;
-    color: white;
+    color: white !important;
     transition: 300ms;
     cursor: pointer;
     text-align: center;

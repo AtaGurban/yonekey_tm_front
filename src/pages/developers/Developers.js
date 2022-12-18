@@ -37,7 +37,6 @@ const Developers = () => {
         (async function(){
          await getBannerByPage('Developers').then(async data => {
             setBanner(data)
-            console.log(data);
             if (data){
                 setBannerClass({backgroundImage: `url(${process.env.REACT_APP_API_URL}api/static/${data.img})`})
             }

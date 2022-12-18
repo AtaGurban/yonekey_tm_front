@@ -17,9 +17,9 @@ const Video = () => {
     const [menuToggle, setMenuToggle] = useState(false)
     const [themaMode, setThemaMode] = useState(true)
     const [videos, setVideos] = useState([])
+    const [query, setQuery] = useState('')
     const [active, setActive] = useState(1)
     const [paginationCount, setPaginationCount] = useState(1)
-    console.log(videos);
     useEffect(()=>{
       (async function(){
           await getAllVideos(active).then((data) => {setVideos(data.rows); setPaginationCount(data.count)});
@@ -71,7 +71,7 @@ const Video = () => {
             <img src={lamp} alt="" />
           </div>
           <div className={`${styles["search"]}`}>
-            <input className="input-video" type="search" placeholder="GÖZLE..." />
+            <input value={query} onChange={(e)=>setQuery(e.target.value)} className="input-video" type="search" placeholder="GÖZLE..." />
             <span>
               <img src={search} alt="search" />
             </span>
@@ -92,8 +92,8 @@ const Video = () => {
         </div>
         <div className={`${styles["content"]}`}>
           {
-            videos.map((i)=>
-              <Link to={`/video/stream/${i.id}`}>
+            videos.filter((video) => {return video.name.toLowerCase().includes(query.toLowerCase())}).map((i)=>
+              <Link key={i.id} to={`/video/stream/${i.id}`}>
                 <div key={i.id} className={`${styles["box"]}`}>
                 <img src={`${process.env.REACT_APP_API_URL}api/static/${i.img}`} alt="Video" />
                 <div className={`${styles["box_head"]}`}>{i.name}</div>

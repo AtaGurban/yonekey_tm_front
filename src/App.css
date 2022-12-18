@@ -6,6 +6,10 @@
   text-decoration: none;
   list-style: none;
 }
+a{
+  color: #000 !important;
+  text-decoration: none;
+}
 
 body{
   margin: 0;
@@ -134,8 +138,5 @@ video{
   font-size: 1.7rem;
 }
 
-a{
-  color: #000 !important;
-}
 
 

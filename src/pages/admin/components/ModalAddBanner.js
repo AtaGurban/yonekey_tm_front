@@ -3,7 +3,7 @@ import { Button, Form, Modal, Dropdown } from "react-bootstrap";
 
 import { createBanner } from "../../../http/bannerApi";
 
-const ModalAddBanner = ({ show, onHide, updateState }) => {
+const ModalAddBanner = ({ show, onHide, updateState, business }) => {
   const [banner, setBanner] = useState(null);
   const [dropPage, setDropPage] = useState('')
 
@@ -13,7 +13,7 @@ const ModalAddBanner = ({ show, onHide, updateState }) => {
     setBanner(e.target.files[0]);
   };
 
-
+  console.log(business);
   const createBannerFunc = async () => {
     const formData = new FormData();
     formData.append("page", dropPage);
@@ -30,7 +30,7 @@ const ModalAddBanner = ({ show, onHide, updateState }) => {
     });
   };
 
-  const roles = ['Lomay', 'Developers', 'Marketing']
+  
 
   return (
     <div>
@@ -55,9 +55,9 @@ const ModalAddBanner = ({ show, onHide, updateState }) => {
               {dropPage || "Banner sahypany saýlaň"}
             </Dropdown.Toggle>
             <Dropdown.Menu>
-              {roles.map((role, index) => (
+              {business.map((role, index) => (
                 <Dropdown.Item onClick={() => setDropPage(role)} key={index}>
-                  {role}
+                  {role.name}
                 </Dropdown.Item>
               ))}
             </Dropdown.Menu>

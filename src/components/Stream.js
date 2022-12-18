@@ -51,7 +51,7 @@ const Stream = () => {
               <button disabled={quality === 480} onClick={() => setQuality(480)} className='btn btn-warning mx-2'>480p</button>
               <button disabled={quality === 720} onClick={() => setQuality(720)} className='btn btn-primary'>720p</button>
             </div>
-            {(files?.length > 0) && (<div className='col-sm-6 text-center'><h3>Goşmaça faýllar</h3>
+            {(files?.length > 0) && (<div className='col-sm-6 text-center mb-5'><h3>Goşmaça faýllar</h3>
               {
                 files.map((i, index) =>
                   <div  className="file-block d-flex"><span className='me-2'>{index + 1}.</span><a href={`${process.env.REACT_APP_API_URL}api/user/download?id=${i.id}`} download>{i.name}</a></div>
