@@ -59,20 +59,17 @@ const Main = () => {
               </Link>
             ))}
         </div>
-        <Carousel>
-          <div>
-            <img src="assets/1.jpeg" />
-            <p className="legend">Legend 1</p>
-          </div>
-          <div>
-            <img src="assets/2.jpeg" />
-            <p className="legend">Legend 2</p>
-          </div>
-          <div>
-            <img src="assets/3.jpeg" />
-            <p className="legend">Legend 3</p>
-          </div>
-        </Carousel>
+        <Link to={"#"}>
+          <Carousel className="mb-5" showThumbs={false}>
+            <div>
+              <img
+                src="http://localhost:5000/api/static/0239ed03-bb11-4914-88c5-3a01e2daf922.jpg"
+                alt=""
+              />
+              {/* <p className="legend">Legend 1</p> */}
+            </div>
+          </Carousel>
+        </Link>
         <div className={`${styles["our-business"]} my-2 w-100 text-center`}>
           <h2 className="fw-bold fs-1">Biziň Bisnezlerimiz</h2>
           <div className={`${styles["slide-business-two"]} my-3 w-100 d-flex`}>

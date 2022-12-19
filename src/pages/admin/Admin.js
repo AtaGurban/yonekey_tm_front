@@ -3,6 +3,7 @@ import { Context } from "../..";
 import styles from "./admin.module.css";
 import AdminTableBanner from "./components/AdminTableBanners";
 import AdminTableBusiness from "./components/AdminTableBusiness";
+import AdminTableSliders from "./components/AdminTableSliders";
 import AdminTableUsers from "./components/AdminTableUsers";
 import AdminTableVideo from "./components/AdminTableVideo";
 import ModalAddVideo from "./components/ModalAddVideo";
@@ -11,7 +12,7 @@ import logo from "./fav.png";
 
 const Admin = () => {
   const [firstSidebarToggle, setFirstSidebarToggle] = useState(true);
-  const [activeMenu, setActiveMenu] = useState(3);
+  const [activeMenu, setActiveMenu] = useState(1);
   const { user } = useContext(Context);
   const [adminState, setAdminState] = useState(<AdminTableVideo />);
 
@@ -37,6 +38,9 @@ const Admin = () => {
         break;
       case "Biznesler":
         setAdminState(<AdminTableBusiness />);
+        break;
+      case "Slaýderler":
+        setAdminState(<AdminTableSliders />);
         break;
 
       default:

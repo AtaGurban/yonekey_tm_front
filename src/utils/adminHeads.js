@@ -11,3 +11,6 @@ export const listBanners = [
 export const listBusiness = [
     'Id', 'Ady', 'Ssylkasy', 'Döredilen wagty', 'Düwmeler'
 ]
+export const listSliders = [
+    'Id', 'Nomeri', 'Ssylkasy', 'Döredilen wagty', 'Düwmeler'
+]
