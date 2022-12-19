@@ -12,16 +12,17 @@ import search from './search.png'
 import bookmark from './bookmark.png'
 import { Link } from "react-router-dom";
 import { getAllVideos } from "../../http/courseApi";
-import { localStorageSave } from "../../utils/localStorageFunc";
-import { FAV_VIDEO_PAGE, WATCHED_PAGE } from "../../utils/pathConsts";
+import { localStorageSave, localStorageView } from "../../utils/localStorageFunc";
+import { FAV_VIDEO_PAGE, VIDEO_PAGE } from "../../utils/pathConsts";
 
-const Video = () => {
+const Watched = () => {
     const [menuToggle, setMenuToggle] = useState(false)
     const [themaMode, setThemaMode] = useState(true)
     const [videos, setVideos] = useState([])
     const [query, setQuery] = useState('')
     const [active, setActive] = useState(1)
     const [paginationCount, setPaginationCount] = useState(1)
+    const watchedVideos = localStorageView('watched')
     useEffect(()=>{
       (async function(){
           await getAllVideos(active).then((data) => {setVideos(data.rows); setPaginationCount(data.count)});
@@ -50,9 +51,9 @@ const Video = () => {
               </Link>
             </li>
             <li> 
-              <Link to={WATCHED_PAGE}>
+              <Link to={VIDEO_PAGE}>
                 <img src={history} alt="Gorenlerim" />
-                Görenlerim
+                Hemme wideolar
               </Link>
             </li>
           </ul>
@@ -90,11 +91,11 @@ const Video = () => {
 
         <div style={{height:'30px'}} className="mb-3 d-flex align-items-center">
             <img className="me-2" src={bookmark} alt=''/>
-            <h2 className="fs-5">HEMME VIDEOLAR</h2>
+            <h2 className="fs-5">GÖRENLERIM</h2>
         </div>
         <div className={`${styles["content"]}`}>
           {
-            videos.filter((video) => {return video.name.toLowerCase().includes(query.toLowerCase())}).map((i)=>
+            videos.filter((video) => {return (video.name.toLowerCase().includes(query.toLowerCase()) && (watchedVideos.includes(video.id)))}).map((i)=>
               <Link onClick={()=>{localStorageSave('watched', i.id)}} key={i.id} to={`/video/stream/${i.id}`}>
                 <div key={i.id} className={`${styles["box"]}`}>
                 <img src={`${process.env.REACT_APP_API_URL}api/static/${i.img}`} alt="Video" />
@@ -111,4 +112,4 @@ const Video = () => {
   );
 };
 
-export default Video;
+export default Watched;

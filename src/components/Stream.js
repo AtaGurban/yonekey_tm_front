@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { getFilesByVideoId, getOneVideo } from '../http/courseApi';
 import Navbar from './Navbar';
 import { MoonLoader } from 'react-spinners'
+import { localStorageSave, localStorageView } from '../utils/localStorageFunc';
 
 
 const Stream = () => {
@@ -12,6 +13,7 @@ const Stream = () => {
   const [files, setFiles] = useState([])
   const [loading, setLoading] = useState(true)
 
+  const favVideos = localStorageView('fav')
 
   useEffect(() => {
     (async function () {
@@ -19,7 +21,6 @@ const Stream = () => {
       await getFilesByVideoId(params.id).then((data) => { setFiles(data) }).finally(() => setLoading(false))
     })();
   }, [params]);
-  console.log(video);
   if (loading) {
     return (
       <div style={{ alignItems: 'center', justifyContent: 'center', height: '100vh' }} className='d-flex'>
@@ -45,11 +46,14 @@ const Stream = () => {
             type='video/mp4'
           >
           </video>
-          <div className='d-flex mt-4 justify-content-center justify-content-md-between w-100 flex-wrap'>
-            <div className='d-flex align-items-center justify-content-start mb-3'>
-              <button disabled={quality === 360} onClick={() => setQuality(360)} className='btn btn-success'>360p</button>
-              <button disabled={quality === 480} onClick={() => setQuality(480)} className='btn btn-warning mx-2'>480p</button>
-              <button disabled={quality === 720} onClick={() => setQuality(720)} className='btn btn-primary'>720p</button>
+          <div className='d-flex mt-4 justify-content-between w-100 flex-wrap'>
+            <div>
+              <button disabled={favVideos.includes(video.id)} onClick={()=>{localStorageSave('fav', video.id)}} className='btn btn-danger mb-3'>Halanlaryma goş</button>
+              <div className='d-flex align-items-center justify-content-start mb-3'>
+                <button disabled={quality === 360} onClick={() => setQuality(360)} className='btn btn-success'>360p</button>
+                <button disabled={quality === 480} onClick={() => setQuality(480)} className='btn btn-warning mx-2'>480p</button>
+                <button disabled={quality === 720} onClick={() => setQuality(720)} className='btn btn-primary'>720p</button>
+              </div>
             </div>
             {(files?.length > 0) && (<div className='col-sm-6 text-center mb-5'><h3>Goşmaça faýllar</h3>
               {
