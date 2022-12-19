@@ -13,7 +13,7 @@ const Stream = () => {
   const [files, setFiles] = useState([])
   const [loading, setLoading] = useState(true)
 
-  const favVideos = localStorageView('fav')
+  const favVideos = localStorageView('fav') || []
 
   useEffect(() => {
     (async function () {
@@ -58,7 +58,7 @@ const Stream = () => {
             {(files?.length > 0) && (<div className='col-sm-6 text-center mb-5'><h3>Goşmaça faýllar</h3>
               {
                 files.map((i, index) =>
-                  <div  className="file-block d-flex"><span className='me-2'>{index + 1}.</span><a href={`${process.env.REACT_APP_API_URL}api/user/download?id=${i.id}`} download>{i.name}</a></div>
+                  <div key={index} className="file-block d-flex"><span className='me-2'>{index + 1}.</span><a href={`${process.env.REACT_APP_API_URL}api/user/download?id=${i.id}`} download>{i.name}</a></div>
                 )
               }
             </div>)}

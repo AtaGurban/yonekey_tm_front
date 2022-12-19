@@ -22,7 +22,7 @@ const Watched = () => {
     const [query, setQuery] = useState('')
     const [active, setActive] = useState(1)
     const [paginationCount, setPaginationCount] = useState(1)
-    const watchedVideos = localStorageView('watched')
+    const watchedVideos = localStorageView('watched') || []
     useEffect(()=>{
       (async function(){
           await getAllVideos(active).then((data) => {setVideos(data.rows); setPaginationCount(data.count)});
