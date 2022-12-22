@@ -12,5 +12,8 @@ export const listBusiness = [
     'Id', 'Ady', 'Ssylkasy', 'Döredilen wagty', 'Düwmeler'
 ]
 export const listSliders = [
-    'Id', 'Nomeri', 'Ssylkasy', 'Döredilen wagty', 'Düwmeler'
+    'Id', 'Nomeri', 'Döredilen wagty', 'Düwmeler'
+]
+export const listTitleCategorys = [
+    'Id', 'Ady' ,'Nomeri', 'Döredilen wagty', 'Düwmeler'
 ]

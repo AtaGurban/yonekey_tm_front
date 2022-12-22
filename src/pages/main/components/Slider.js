@@ -1,21 +1,31 @@
-import React from 'react';
-import { Carousel } from 'react-responsive-carousel';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Carousel } from "react-responsive-carousel";
 
-const Slider = () => {
-    return (
-        <Link className='my-5' to={"#"}>
-          <Carousel className="mb-5" showThumbs={false}>
-            <div>
-              <img
-                src="http://localhost:5000/api/static/0239ed03-bb11-4914-88c5-3a01e2daf922.jpg"
-                alt=""
-              />
-              {/* <p className="legend">Legend 1</p> */}
-            </div>
-          </Carousel>
-        </Link>
-    );
+const Slider = ({ slider }) => {
+  const witdth = window.innerWidth
+  let centerSlidePercentage 
+  if (witdth > 1400){
+    centerSlidePercentage = 100
+  } else if (witdth < 1400 && witdth > 1000){
+    centerSlidePercentage = 120
+  } else if (witdth < 1000 && witdth > 500){
+    centerSlidePercentage = 140
+  } else if (witdth < 500){
+    centerSlidePercentage = 155
+  }
+  return (
+        <Carousel className="my-4" axis="horizontal" showStatus={false} centerMode centerSlidePercentage={centerSlidePercentage} swipeScrollTolerance={5} emulateTouch showThumbs={false} swipeable={true} showIndicators={false} infiniteLoop={true}>
+          {slider?.img.map((i) => (
+          <div key={i.id}>
+            <img
+              src={`${process.env.REACT_APP_API_URL}api/static/${i.img}`}
+              alt=""
+            />
+            {/* <p className="legend">{slider.text}</p> */}
+          </div>
+          ))}
+        </Carousel>
+  );
 };
 
 export default Slider;

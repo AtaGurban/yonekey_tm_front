@@ -2,14 +2,14 @@ import { React, useState } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
 import { createSlider } from "../../../http/mainPageApi";
 
-const ModalAddSlider = ({ show, onHide, updateState }) => {
+const ModalEditSlider = ({ show, onHide, updateState, slider }) => {
   const [number, setNumber] = useState("");
   const [images, setImages] = useState([]);
 
   const addFile = () => {
     setImages([...images, { file: "", number: images.length + 1, name: "" }]);
   };
-
+  console.log(slider);
   const removeFile = (number) => {
     setImages(images.filter((i) => i.number !== number));
   };
@@ -119,4 +119,4 @@ const ModalAddSlider = ({ show, onHide, updateState }) => {
   );
 };
 
-export default ModalAddSlider;
+export default ModalEditSlider;

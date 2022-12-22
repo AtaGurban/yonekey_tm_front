@@ -6,6 +6,26 @@ export const createSlider = async (item)=>{
     return data
 }
 
+export const createTitleCategory = async (item)=>{
+    const {data} = await $authhost.post('api/main-page/title-category', item)
+    return data
+}
+
+export const updateTitleCategory = async (item)=>{
+    const {data} = await $authhost.put('api/main-page/title-category', item)
+    return data
+}
+
+export const getTitleCategory = async ()=>{
+    const {data} = await $host.get('api/main-page/title-category')
+    return data
+}
+
+export const deleteTitleCategory = async (id)=>{
+    const {data} = await $authhost.delete(`api/main-page/title-category?id=${id}`)
+    return data
+}
+
 export const getSlider = async (number)=>{
     const {data} = await $host.get(`api/main-page/slider?number=${number}`)
     return data

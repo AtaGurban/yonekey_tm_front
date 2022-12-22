@@ -1,17 +1,17 @@
 import { observer } from "mobx-react-lite";
 import React, { useEffect, useState, useContext } from "react";
 import Table from "react-bootstrap/Table";
-import { deleteBusiness, deleteSlider, getAllSlider } from "../../../http/mainPageApi";
+import { deleteSlider, getAllSlider } from "../../../http/mainPageApi";
 import { Context } from "../../../index";
 import { listSliders } from "../../../utils/adminHeads";
 import ModalAddSlider from "./ModalAddSlider";
-import ModalEditBusiness from "./ModalEditBusiness";
+// import ModalEditSlider from "./ModalEditSlider";
 
 const AdminTableSliders = observer(() => {
   const [slider, setSlider] = useState([]);
-  const [currentSlider, setCurrentSlider] = useState({});
+  // const [currentSlider, setCurrentSlider] = useState({});
   const [modalAddSliderVisible, setModalAddSliderVisible] = useState(false);
-  const [modalEditSliderVisible, setModalEditSliderVisible] = useState(false);
+  // const [modalEditSliderVisible, setModalEditSliderVisible] = useState(false);
   const { user } = useContext(Context);
 
   useEffect(() => {
@@ -26,10 +26,10 @@ const AdminTableSliders = observer(() => {
       await updateState();
     });
   };
-  const editSlider = (business) => {
-    setCurrentSlider(business)
-    setModalEditSliderVisible(true)
-  };
+  // const editSlider = (slider) => {
+  //   setCurrentSlider(slider)
+  //   setModalEditSliderVisible(true)
+  // };
   const updateState = async () => {
     await getAllSlider().then((data) => {
       setSlider(data);
@@ -51,12 +51,12 @@ const AdminTableSliders = observer(() => {
         show={modalAddSliderVisible}
         onHide={() => setModalAddSliderVisible(false)}
       />
-      <ModalEditBusiness
-        business={currentSlider}
+      {/* <ModalEditSlider
+        slider={currentSlider}
         updateState={updateState}
         show={modalEditSliderVisible}
         onHide={() => setModalEditSliderVisible(false)}
-      />
+      /> */}
       <Table bordered hover responsive>
         <thead>
           <tr>
@@ -70,18 +70,17 @@ const AdminTableSliders = observer(() => {
             <tr key={index}>
               <td>{i.id}</td>
               <td>{i.number}</td>
-              <td>{i.link}</td>
               <td>{i.createdAt}</td>
               <td>
                 {
                   <div className="d-flex justify-content-center">
-                    <button
+                    {/* <button
                       onClick={() => editSlider(i)}
                       className="btn btn-primary mx-1"
                       title="Üýtgetmek"
                     >
                       <i className="fas fa-cogs"></i>
-                    </button>
+                    </button> */}
                     <button
                       onClick={() => removeSliderFunc(i.id)}
                       disabled={user.user.role !== "SUPERADMIN"}

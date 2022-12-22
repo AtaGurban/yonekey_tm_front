@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import {UserStore} from './store/UserStore';  
 import { BannerStore } from './store/bannerStore';
+import { CategoryStore } from './store/category';
 
 export const Context = createContext(null);
 
@@ -13,6 +14,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Context.Provider value={{
     user: new UserStore(),
+    category: new CategoryStore(),
     banner: new BannerStore(),
   }}>
   <React.StrictMode>

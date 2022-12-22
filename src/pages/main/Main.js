@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { MoonLoader } from "react-spinners";
-import { clickBusiness, getBusiness } from "../../http/mainPageApi";
+import { clickBusiness, getAllSlider, getBusiness } from "../../http/mainPageApi";
 import MainNavbar from "./components/MainNavbar";
 import styles from "./main.module.css";
-import { Carousel } from "react-responsive-carousel";
+import Slider from "./components/Slider";
 
 const Main = () => {
   const [loading, setLoading] = useState(true);
   const [business, setBusiness] = useState([]);
+  const [sliders, setSliders] = useState([]);
 
   const clickBusinessFunc = async (id) => {
     await clickBusiness(id);
@@ -19,7 +20,10 @@ const Main = () => {
         .then(async (data) => {
           setBusiness(data);
         })
-        .finally(() => setLoading(false));
+        
+      await getAllSlider().then(async (data) => {
+        setSliders(data);
+      }).finally(() => {setLoading(false)});
     })();
   }, []);
 
@@ -37,12 +41,11 @@ const Main = () => {
       </div>
     );
   }
-
   return (
     <div>
       <MainNavbar />
-      <div className="container">
-        <div className={`${styles["slide-business"]} d-flex`}>
+      <div className="">
+        <div className={`${styles["slide-business"]} container d-flex`}>
           {business
             .sort((a, b) => {
               return b.counter - a.counter;
@@ -59,18 +62,8 @@ const Main = () => {
               </Link>
             ))}
         </div>
-        <Link to={"#"}>
-          <Carousel className="mb-5" showThumbs={false}>
-            <div>
-              <img
-                src="http://localhost:5000/api/static/0239ed03-bb11-4914-88c5-3a01e2daf922.jpg"
-                alt=""
-              />
-              {/* <p className="legend">Legend 1</p> */}
-            </div>
-          </Carousel>
-        </Link>
-        <div className={`${styles["our-business"]} my-2 w-100 text-center`}>
+        <Slider slider={(sliders.filter(i=> i.number === 1))[0]}/>
+        <div className={`${styles["our-business"]} container my-2 w-100 text-center`}>
           <h2 className="fw-bold fs-1">Biziň Bisnezlerimiz</h2>
           <div className={`${styles["slide-business-two"]} my-3 w-100 d-flex`}>
             {business

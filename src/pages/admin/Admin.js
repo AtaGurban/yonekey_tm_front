@@ -4,6 +4,7 @@ import styles from "./admin.module.css";
 import AdminTableBanner from "./components/AdminTableBanners";
 import AdminTableBusiness from "./components/AdminTableBusiness";
 import AdminTableSliders from "./components/AdminTableSliders";
+import AdminTableTitleCategory from "./components/AdminTableTitleCategory";
 import AdminTableUsers from "./components/AdminTableUsers";
 import AdminTableVideo from "./components/AdminTableVideo";
 import ModalAddVideo from "./components/ModalAddVideo";
@@ -41,6 +42,9 @@ const Admin = () => {
         break;
       case "Slaýderler":
         setAdminState(<AdminTableSliders />);
+        break;
+      case "Kategoriýa görnüşleri":
+        setAdminState(<AdminTableTitleCategory />);
         break;
 
       default:

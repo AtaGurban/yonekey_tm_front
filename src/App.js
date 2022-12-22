@@ -7,16 +7,19 @@ import { useContext, useEffect, useState } from "react";
 import { Context } from ".";
 import { check } from "./http/userAPI";
 import {MoonLoader} from 'react-spinners'
+import { getTitleCategory } from "./http/mainPageApi";
 
 
 
 const App = observer(() => {
-  const { user, banner } = useContext(Context) 
+  const { user, category } = useContext(Context) 
   const [loading, setLoading] = useState(true)
 
   useEffect(()=>{ 
      (async function(){
-
+      await getTitleCategory().then(async data=>{
+        await category.setTitleCategory(data)
+      })
       await check().then(async data => {
         await user.setUser(data)
         await user.setIsAuth(true) 
