@@ -14,7 +14,7 @@ const ModalEditBusiness = ({ show, onHide, updateState, business }) => {
   useEffect(()=>{
     setName(business.name)
     setLink(business.link)
-  }, [])
+  }, [business])
   const createBannerFunc = async () => {
     const formData = new FormData();
     formData.append("id", business.id);
@@ -27,7 +27,7 @@ const ModalEditBusiness = ({ show, onHide, updateState, business }) => {
       try {
         onHide();
         updateState();
-        alert("Üstünlikli ýerine ýetirildi");
+        alert("Üstünlikli ýerine ýetirildi"); 
       } catch (error) {
         console.log(error);
         alert("error");

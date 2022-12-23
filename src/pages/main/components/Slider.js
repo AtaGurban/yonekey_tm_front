@@ -14,15 +14,15 @@ const Slider = ({ slider }) => {
     centerSlidePercentage = 155
   }
   return (
-        <Carousel className="my-4" axis="horizontal" showStatus={false} centerMode centerSlidePercentage={centerSlidePercentage} swipeScrollTolerance={5} emulateTouch showThumbs={false} swipeable={true} showIndicators={false} infiniteLoop={true}>
+        <Carousel className="my-4" axis="horizontal" autoPlay showStatus={false} centerMode centerSlidePercentage={centerSlidePercentage} swipeScrollTolerance={5} emulateTouch showThumbs={false} swipeable={true} showIndicators={false} infiniteLoop={true}>
           {slider?.img.map((i) => (
-          <div key={i.id}>
-            <img
-              src={`${process.env.REACT_APP_API_URL}api/static/${i.img}`}
-              alt=""
-            />
-            {/* <p className="legend">{slider.text}</p> */}
-          </div>
+            <div key={i.id}>
+              <img
+                src={`${process.env.REACT_APP_API_URL}api/static/${i.img}`}
+                alt=""
+              />
+              {/* <p className="legend">{slider.text}</p> */}
+            </div>
           ))}
         </Carousel>
   );

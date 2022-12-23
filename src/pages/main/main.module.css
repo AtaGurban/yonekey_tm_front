@@ -26,12 +26,22 @@
 
 .business-box-two{
     width: 130px;
+    display: flex;
     height: 130px;
+    align-items: center;
+    justify-content: center;
+    background: #F6F4F7;
+    border-radius: 50%;
+}
+
+@media (max-width:500px) {
+    .business-box-two{
+        width: 65px;
+        height: 65px;
+    }
 }
 
 .business-box-two img {
-    width: 100%;
+    width: 90%;
     object-fit: cover;
-    border-radius: 50%;
-    height: 100%;
 }

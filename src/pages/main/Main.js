@@ -1,19 +1,21 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useEffect, useState } from "react";
 import { MoonLoader } from "react-spinners";
 import { clickBusiness, getAllSlider, getBusiness } from "../../http/mainPageApi";
 import MainNavbar from "./components/MainNavbar";
 import styles from "./main.module.css";
 import Slider from "./components/Slider";
+import { Context } from "../..";
+import ProductCategory from "./components/ProductCategory";
 
 const Main = () => {
   const [loading, setLoading] = useState(true);
   const [business, setBusiness] = useState([]);
   const [sliders, setSliders] = useState([]);
-
+  const { category } = useContext(Context);
   const clickBusinessFunc = async (id) => {
     await clickBusiness(id);
   };
+  const firstTitleCategory = category.titleCategory.filter((i)=> i.number === 1)
   useEffect(() => {
     (async function () {
       await getBusiness()
@@ -51,15 +53,15 @@ const Main = () => {
               return b.counter - a.counter;
             })
             .map((i) => (
-              <Link
+              <a
                 key={i.id}
                 onClick={() => clickBusinessFunc(i.id)}
-                to={i.link}
+                href={i.link}
               >
                 <div className={`${styles["business-box"]} mx-2 my-2`}>
                   {i.name}
                 </div>
-              </Link>
+              </a>
             ))}
         </div>
         <Slider slider={(sliders.filter(i=> i.number === 1))[0]}/>
@@ -71,23 +73,25 @@ const Main = () => {
                 return b.counter - a.counter;
               })
               .map((i) => (
-                <Link
+                <a
                   onClick={() => clickBusinessFunc(i.id)}
                   key={i.id}
                   className={`${styles["business-box-two"]} my-2 mx-4`}
-                  to={i.link}
+                  href={i.link}
                 >
                   <div className={`${styles["business-box-two"]} `}>
                     <img
-                      style={{ height: 250 }}
+                      // style={{ height: 250 }}
                       src={`${process.env.REACT_APP_API_URL}api/static/${i.img}`}
                       alt=""
                     />
                   </div>
-                </Link>
+                </a>
               ))}
           </div>
         </div>
+        <Slider slider={(sliders.filter(i=> i.number === 2))[0]}/>
+        <ProductCategory titleCategory={firstTitleCategory[0]}/>
       </div>
     </div>
   );

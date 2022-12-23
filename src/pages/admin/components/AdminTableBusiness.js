@@ -71,6 +71,7 @@ const AdminTableBusiness = observer(() => {
             <tr key={index}>
               <td>{i.id}</td>
               <td>{i.name}</td>
+              <td>{i.counter}</td>
               <td>{i.link}</td>
               <td>{i.createdAt}</td>
               <td>

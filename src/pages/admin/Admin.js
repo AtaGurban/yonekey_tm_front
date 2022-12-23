@@ -3,6 +3,7 @@ import { Context } from "../..";
 import styles from "./admin.module.css";
 import AdminTableBanner from "./components/AdminTableBanners";
 import AdminTableBusiness from "./components/AdminTableBusiness";
+import AdminTableCategory from "./components/AdminTableCategory";
 import AdminTableSliders from "./components/AdminTableSliders";
 import AdminTableTitleCategory from "./components/AdminTableTitleCategory";
 import AdminTableUsers from "./components/AdminTableUsers";
@@ -45,6 +46,9 @@ const Admin = () => {
         break;
       case "Kategoriýa görnüşleri":
         setAdminState(<AdminTableTitleCategory />);
+        break;
+      case "Kategoriýalar":
+        setAdminState(<AdminTableCategory/>);
         break;
 
       default:

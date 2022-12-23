@@ -7,13 +7,10 @@ const ModalAddBanner = ({ show, onHide, updateState, business }) => {
   const [banner, setBanner] = useState(null);
   const [dropPage, setDropPage] = useState('')
 
-
-
   const selectFileBanner = (e) => {
     setBanner(e.target.files[0]);
   };
 
-  console.log(business);
   const createBannerFunc = async () => {
     const formData = new FormData();
     formData.append("page", dropPage);

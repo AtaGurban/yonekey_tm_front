@@ -13,7 +13,7 @@ const AdminTableTitleCategory = observer(() => {
   const [modalAddTitleCategoryVisible, setModalAddTitleCategoryVisible] = useState(false);
   const [modalEditTitleCategoryVisible, setModalEditTitleCategoryVisible] = useState(false);
   const { user } = useContext(Context);
-    console.log(titleCategory);
+
   useEffect(() => {
     (async function () {
       await getTitleCategory().then((data) => {

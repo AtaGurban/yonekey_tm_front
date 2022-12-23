@@ -11,6 +11,26 @@ export const createTitleCategory = async (item)=>{
     return data
 }
 
+export const createCategory = async (item)=>{
+    const {data} = await $authhost.post('api/main-page/category', item)
+    return data
+}
+
+export const updateCategory = async (item)=>{
+    const {data} = await $authhost.put('api/main-page/category', item)
+    return data
+}
+
+export const getAllCategory = async ()=>{
+    const {data} = await $host.get('api/main-page/category')
+    return data
+}
+
+export const deleteCategory = async (id)=>{
+    const {data} = await $host.delete(`api/main-page/category?id=${id}`)
+    return data
+}
+
 export const updateTitleCategory = async (item)=>{
     const {data} = await $authhost.put('api/main-page/title-category', item)
     return data
@@ -18,6 +38,11 @@ export const updateTitleCategory = async (item)=>{
 
 export const getTitleCategory = async ()=>{
     const {data} = await $host.get('api/main-page/title-category')
+    return data
+}
+
+export const getTitleCategoryWithCategory = async ()=>{
+    const {data} = await $host.get('api/main-page/title-category?category=true')
     return data
 }
 

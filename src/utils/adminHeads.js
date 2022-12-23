@@ -9,11 +9,14 @@ export const listBanners = [
     'Id', 'Degişli sahypasy', 'Döredilen wagty', 'Düwmeler'
 ]
 export const listBusiness = [
-    'Id', 'Ady', 'Ssylkasy', 'Döredilen wagty', 'Düwmeler'
+    'Id', 'Ady', 'Basylan sany', 'Ssylkasy', 'Döredilen wagty', 'Düwmeler'
 ]
 export const listSliders = [
     'Id', 'Nomeri', 'Döredilen wagty', 'Düwmeler'
 ]
 export const listTitleCategorys = [
     'Id', 'Ady' ,'Nomeri', 'Döredilen wagty', 'Düwmeler'
+]
+export const listCategorys = [
+    'Id', 'Ady', 'Degişli kategoriýa görnüşi' ,'Basylan sany', 'Linklimi?', 'Link', 'Döredilen wagty', 'Düwmeler'
 ]

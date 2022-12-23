@@ -7,7 +7,7 @@ import { useContext, useEffect, useState } from "react";
 import { Context } from ".";
 import { check } from "./http/userAPI";
 import {MoonLoader} from 'react-spinners'
-import { getTitleCategory } from "./http/mainPageApi";
+import { getTitleCategory, getTitleCategoryWithCategory } from "./http/mainPageApi";
 
 
 
@@ -17,7 +17,10 @@ const App = observer(() => {
 
   useEffect(()=>{ 
      (async function(){
-      await getTitleCategory().then(async data=>{
+      // await getTitleCategory().then(async data=>{
+      //   await category.setTitleCategory(data)
+      // })
+      await getTitleCategoryWithCategory().then(async data=>{
         await category.setTitleCategory(data)
       })
       await check().then(async data => {
