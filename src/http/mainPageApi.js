@@ -11,6 +11,11 @@ export const createTitleCategory = async (item)=>{
     return data
 }
 
+export const createTitleSubCategory = async (item)=>{
+    const {data} = await $authhost.post('api/main-page/title-sub-category', item)
+    return data
+}
+
 export const createCategory = async (item)=>{
     const {data} = await $authhost.post('api/main-page/category', item)
     return data
@@ -38,6 +43,11 @@ export const updateTitleCategory = async (item)=>{
 
 export const getTitleCategory = async ()=>{
     const {data} = await $host.get('api/main-page/title-category')
+    return data
+}
+
+export const getTitleSubCategory = async ()=>{
+    const {data} = await $host.get('api/main-page/title-sub-category')
     return data
 }
 

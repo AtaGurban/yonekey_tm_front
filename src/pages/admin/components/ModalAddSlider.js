@@ -4,34 +4,56 @@ import { createSlider } from "../../../http/mainPageApi";
 
 const ModalAddSlider = ({ show, onHide, updateState }) => {
   const [number, setNumber] = useState("");
-  const [images, setImages] = useState([]);
+  const [webImages, setWebImages] = useState([]);
+  const [mobileImages, setMobileImages] = useState([]);
 
   const addFile = () => {
-    setImages([...images, { file: "", number: images.length + 1, name: "" }]);
+    setWebImages([
+      ...webImages,
+      { file: "", number: webImages.length + 1, name: "" },
+    ]);
+    setMobileImages([
+      ...mobileImages,
+      { file: "", number: mobileImages.length + 1, name: "" },
+    ]);
   };
 
   const removeFile = (number) => {
-    setImages(images.filter((i) => i.number !== number));
+    setWebImages(webImages.filter((i) => i.number !== number));
+    setMobileImages(mobileImages.filter((i) => i.number !== number));
   };
 
-  const selectFileOne = (file, number) => {
-    setImages(
-      images.map((i) => (i.number === number ? { ...i, file: file } : i))
+  const selectFileWeb = (file, number) => {
+    setWebImages(
+      webImages.map((i) => (i.number === number ? { ...i, file: file } : i))
+    );
+  };
+
+  const selectFileMobile = (file, number) => {
+    setMobileImages(
+      mobileImages.map((i) => (i.number === number ? { ...i, file: file } : i))
     );
   };
 
   const createSliderFunc = async () => {
     const formData = new FormData();
-    if (number > 6){
+    if (number > 6) {
       alert("Nomer 6 ýokary bolmaly däl");
       return false;
     }
     formData.append("number", number);
-    formData.append("countFiles", images.length);
-    for (let i = 0; i < images.length; i++) {
-      if (images[i].file !== "") {
-        let file = images[i];
-        formData.append("file[" + i + "]", file.file);
+    formData.append("countFiles", webImages.length);
+    for (let i = 0; i < webImages.length; i++) {
+      if (webImages[i].file !== "") {
+        let file = webImages[i];
+        formData.append("fileWeb[" + i + "]", file.file);
+      } else {
+        alert("Doldurylmadyk faýl bar");
+        return false;
+      }
+      if (mobileImages[i].file !== "") {
+        let file = mobileImages[i];
+        formData.append("fileMobile[" + i + "]", file.file);
       } else {
         alert("Doldurylmadyk faýl bar");
         return false;
@@ -41,7 +63,7 @@ const ModalAddSlider = ({ show, onHide, updateState }) => {
       try {
         onHide();
         updateState();
-        setImages([]);
+        setWebImages([]);
         setNumber("");
         alert("Üstünlikli ýerine ýetirildi");
       } catch (error) {
@@ -61,7 +83,9 @@ const ModalAddSlider = ({ show, onHide, updateState }) => {
         </Modal.Header>
         <Modal.Body>
           <Form>
-            <span className="mt-3 c-bold">Slider nomeri (6-dan ýokary bolmaly däl)</span>
+            <span className="mt-3 c-bold">
+              Slider nomeri (6-dan ýokary bolmaly däl)
+            </span>
             <Form.Control
               className="my-3"
               value={number}
@@ -82,18 +106,19 @@ const ModalAddSlider = ({ show, onHide, updateState }) => {
               <Button variant={"outline-dark"} onClick={addFile}>
                 Surat goş
               </Button>
-              {images.map((item) => (
+              {webImages.map((item) => (
                 <div key={item.number} className="row mt-3">
-                  <div className="col-8">
+                  <p className="mb-0">Web üçin (1980*792)</p>
+                  <div className="col-8 mt-2">
                     <Form.Control
                       className=""
                       type="file"
                       onChange={(e) =>
-                        selectFileOne(e.target.files[0], item.number)
+                        selectFileWeb(e.target.files[0], item.number)
                       }
                     />
                   </div>
-                  <div className="col-4">
+                  <div className="col-4 mt-2">
                     <Button
                       onClick={() => removeFile(item.number)}
                       variant={"danger"}
@@ -101,6 +126,25 @@ const ModalAddSlider = ({ show, onHide, updateState }) => {
                       Poz
                     </Button>
                   </div>
+                  <p className="mb-0 mt-2">Mobile üçin</p>
+                  <div className="col-8 mt-2">
+                    <Form.Control
+                      className=""
+                      type="file"
+                      onChange={(e) =>
+                        selectFileMobile(e.target.files[0], item.number)
+                      }
+                    />
+                  </div>
+                  <div className="col-4 mt-2">
+                    <Button
+                      onClick={() => removeFile(item.number)}
+                      variant={"danger"}
+                    >
+                      Poz
+                    </Button>
+                  </div>
+                  <hr className="mt-3"/>
                 </div>
               ))}
             </div>

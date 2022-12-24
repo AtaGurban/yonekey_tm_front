@@ -17,6 +17,10 @@ export const listSliders = [
 export const listTitleCategorys = [
     'Id', 'Ady' ,'Nomeri', 'Döredilen wagty', 'Düwmeler'
 ]
+
+export const listTitleSubCategorys = [
+    'Id', 'Ady' ,'Nomeri', 'Degişli kategoriýasy', 'Döredilen wagty', 'Düwmeler'
+]
 export const listCategorys = [
     'Id', 'Ady', 'Degişli kategoriýa görnüşi' ,'Basylan sany', 'Linklimi?', 'Link', 'Döredilen wagty', 'Düwmeler'
 ]

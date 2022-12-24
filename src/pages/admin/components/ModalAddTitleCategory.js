@@ -47,7 +47,7 @@ const ModalAddTitleCategory = ({ show, onHide, updateState }) => {
               onChange={(e) => setNumber(e.target.value)}
               placeholder={"Kategoriýa görnüş nomeri"}
             />
-            <span className="mt-3 c-bold">Kategoriýa görnüşin ady (6-dan ýokary bolmaly däl)</span>
+            <span className="mt-3 c-bold">Kategoriýa görnüşin ady</span>
             <Form.Control
               className="my-3"
               value={name}
