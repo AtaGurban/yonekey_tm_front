@@ -24,3 +24,6 @@ export const listTitleSubCategorys = [
 export const listCategorys = [
     'Id', 'Ady', 'Degişli kategoriýa görnüşi' ,'Basylan sany', 'Linklimi?', 'Link', 'Döredilen wagty', 'Düwmeler'
 ]
+export const listSubCategorys = [
+    'Id', 'Ady', 'Degişli kiçi kategoriýa görnüşi' ,'Basylan sany', 'Link', 'Döredilen wagty', 'Düwmeler'
+]

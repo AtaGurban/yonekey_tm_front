@@ -1,11 +1,11 @@
 import { observer } from "mobx-react-lite";
 import React, { useEffect, useState, useContext } from "react";
 import Table from "react-bootstrap/Table";
-import { deleteTitleCategory, getAllCategory, getTitleSubCategory } from "../../../http/mainPageApi";
+import { deleteTitleSubCategory, getAllCategory, getTitleSubCategory } from "../../../http/mainPageApi";
 import { Context } from "../../../index";
 import { listTitleSubCategorys } from "../../../utils/adminHeads";
 import ModalAddTitleSubCategory from "./ModalAddTitleSubCategory";
-import ModalEditTitleCategory from "./ModalEditTitleCategory";
+import ModalEditTitleSubCategory from "./ModalEditTitleSubCategory";
 
 const AdminTableTitleSubCategory = observer(() => {
   const [titleSubCategory, setTitleSubCategory] = useState([]);
@@ -26,7 +26,7 @@ const AdminTableTitleSubCategory = observer(() => {
     })();
   }, []);
   const removeTitleSubCategoryFunc = async (id) => {
-    await deleteTitleCategory(id).then(async () => {
+    await deleteTitleSubCategory(id).then(async () => {
       await updateState();
     });
   };
@@ -56,9 +56,11 @@ const AdminTableTitleSubCategory = observer(() => {
         show={modalAddTitleSubCategoryVisible}
         onHide={() => setModalAddTitleSubCategoryVisible(false)}
       />
-      <ModalEditTitleCategory
-        titleCategory={currentTitleSubCategory}
+      <ModalEditTitleSubCategory
+        titleCategory={category.titleCategory}
         updateState={updateState}
+        categorys={categorys}
+        currentTitleSubCategory={currentTitleSubCategory}
         show={modalEditTitleSubCategoryVisible}
         onHide={() => setModalEditTitleSubCategoryVisible(false)}
       />
@@ -75,8 +77,8 @@ const AdminTableTitleSubCategory = observer(() => {
             <tr key={index}>
               <td>{i.id}</td>
               <td>{i.name}</td>
-              <td>{i.categoryId}</td>
               <td>{i.number}</td>
+              <td>{(categorys.filter((j)=> j.id === i.categoryId)[0])?.name}</td>
               <td>{i.createdAt}</td>
               <td>
                 {

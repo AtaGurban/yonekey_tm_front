@@ -1,8 +1,8 @@
-import { React, useState } from "react";
+import { React, useEffect, useState } from "react";
 import { Button, Form, Modal, Dropdown } from "react-bootstrap";
-import { createTitleSubCategory } from "../../../http/mainPageApi";
+import { updateTitleSubCategory } from "../../../http/mainPageApi";
 
-const ModalAddTitleSubCategory = ({ show, onHide, updateState, categorys, titleCategory }) => {
+const ModalEditTitleSubCategory = ({ show, onHide, updateState, categorys, titleCategory, currentTitleSubCategory }) => {
   const [number, setNumber] = useState("");
   const [name, setName] = useState("");
   const [currentTitleCategory, setCurrentTitleCategory] = useState(null)
@@ -16,8 +16,9 @@ const ModalAddTitleSubCategory = ({ show, onHide, updateState, categorys, titleC
     }
     formData.append("number", number);
     formData.append("name", name);
+    formData.append("id", currentTitleSubCategory.id);
     formData.append("categoryId", currentCategory?.id);
-    await createTitleSubCategory(formData).then((data) => {
+    await updateTitleSubCategory(formData).then((data) => {
       try {
         onHide();
         updateState();
@@ -32,7 +33,18 @@ const ModalAddTitleSubCategory = ({ show, onHide, updateState, categorys, titleC
       }
     });
   };
-  console.log(titleCategory);
+
+  useEffect(()=>{
+    setName(currentTitleSubCategory.name)
+    setNumber(currentTitleSubCategory.number)
+    setCurrentCategory((categorys.filter(i=> i.id === currentTitleSubCategory.categoryId))[0])
+  }, [currentTitleSubCategory, categorys])
+
+  useEffect(()=>{
+    setCurrentTitleCategory((titleCategory.filter(i => i.id === currentCategory?.titleCategoryId))[0])
+  }, [currentCategory])
+  console.log(currentTitleCategory);
+  console.log(currentCategory);
   return (
     <div>
       <Modal show={show} onHide={onHide} size="lg" centered>
@@ -97,7 +109,7 @@ const ModalAddTitleSubCategory = ({ show, onHide, updateState, categorys, titleC
             Ýap
           </Button>
           <Button variant={"outline-success"} onClick={createTitleSubCategoryFunc}>
-            Goş
+            Üýtget
           </Button>
         </Modal.Footer>
       </Modal>
@@ -105,4 +117,4 @@ const ModalAddTitleSubCategory = ({ show, onHide, updateState, categorys, titleC
   );
 };
 
-export default ModalAddTitleSubCategory;
+export default ModalEditTitleSubCategory;

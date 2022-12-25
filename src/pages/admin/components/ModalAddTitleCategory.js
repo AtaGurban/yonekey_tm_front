@@ -1,26 +1,30 @@
-import { React, useState } from "react";
+import { React, useContext, useState } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
-import { createTitleCategory } from "../../../http/mainPageApi";
+import { Context } from "../../..";
+import { createTitleCategory, getTitleCategoryWithCategory } from "../../../http/mainPageApi";
 
 const ModalAddTitleCategory = ({ show, onHide, updateState }) => {
   const [number, setNumber] = useState("");
   const [name, setName] = useState("");
-  
+  const { category } = useContext(Context) 
 
   const createSliderFunc = async () => {
     const formData = new FormData();
     if (number > 6){
-      alert("Nomer 6 ýokary bolmaly däl");
+      alert("Nomer 6 ýokary bolmaly däl"); 
       return false;
     }
     formData.append("number", number);
     formData.append("name", name);
-    await createTitleCategory(formData).then((data) => {
+    await createTitleCategory(formData).then(async(data) => {
       try {
         onHide();
         updateState();
         setName('');
         setNumber("");
+        await getTitleCategoryWithCategory().then(async data=>{
+          await category.setTitleCategory(data)
+        })
         alert("Üstünlikli ýerine ýetirildi");
       } catch (error) {
         console.log(error);

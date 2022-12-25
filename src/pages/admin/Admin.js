@@ -5,6 +5,7 @@ import AdminTableBanner from "./components/AdminTableBanners";
 import AdminTableBusiness from "./components/AdminTableBusiness";
 import AdminTableCategory from "./components/AdminTableCategory";
 import AdminTableSliders from "./components/AdminTableSliders";
+import AdminTableSubCategory from "./components/AdminTableSubCategory";
 import AdminTableTitleCategory from "./components/AdminTableTitleCategory";
 import AdminTableUsers from "./components/AdminTableUsers";
 import AdminTableVideo from "./components/AdminTableVideo";
@@ -53,6 +54,9 @@ const Admin = () => {
         break;
       case "Kiçi kategoriýa görnüşleri":
         setAdminState(<AdminTableTitleSubCategory/>);
+        break;
+      case "Kiçi kategoriýalar":
+        setAdminState(<AdminTableSubCategory/>);
         break;
 
       default:

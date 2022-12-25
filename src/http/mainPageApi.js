@@ -36,6 +36,26 @@ export const deleteCategory = async (id)=>{
     return data
 }
 
+export const createSubCategory = async (item)=>{
+    const {data} = await $authhost.post('api/main-page/sub-category', item)
+    return data
+}
+
+export const updateSubCategory = async (item)=>{
+    const {data} = await $authhost.put('api/main-page/sub-category', item)
+    return data
+}
+
+export const getAllSubCategory = async ()=>{
+    const {data} = await $host.get('api/main-page/sub-category')
+    return data
+}
+
+export const deleteSubCategory = async (id)=>{
+    const {data} = await $host.delete(`api/main-page/sub-category?id=${id}`)
+    return data
+}
+
 export const updateTitleCategory = async (item)=>{
     const {data} = await $authhost.put('api/main-page/title-category', item)
     return data
@@ -58,6 +78,16 @@ export const getTitleCategoryWithCategory = async ()=>{
 
 export const deleteTitleCategory = async (id)=>{
     const {data} = await $authhost.delete(`api/main-page/title-category?id=${id}`)
+    return data
+}
+
+export const deleteTitleSubCategory = async (id)=>{
+    const {data} = await $authhost.delete(`api/main-page/title-sub-category?id=${id}`)
+    return data
+}
+
+export const updateTitleSubCategory = async (item)=>{
+    const {data} = await $authhost.post(`api/main-page/title-sub-category`, item)
     return data
 }
 
