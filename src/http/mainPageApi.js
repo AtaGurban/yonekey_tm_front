@@ -71,6 +71,11 @@ export const getTitleSubCategory = async ()=>{
     return data
 }
 
+export const getOneCategoryItems = async (id)=>{
+    const {data} = await $host.get(`api/main-page/title-sub-category?id=${id}`)
+    return data
+}
+
 export const getTitleCategoryWithCategory = async ()=>{
     const {data} = await $host.get('api/main-page/title-category?category=true')
     return data

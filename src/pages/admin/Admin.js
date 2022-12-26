@@ -1,4 +1,5 @@
 import React, { useContext, useState } from "react";
+import { Link } from "react-router-dom";
 import { Context } from "../..";
 import styles from "./admin.module.css";
 import AdminTableBanner from "./components/AdminTableBanners";
@@ -80,7 +81,9 @@ const Admin = () => {
         } ${firstSidebarToggle && "text-center"}`}
       >
         <div className={`${styles["admin-logo"]} text-center m-3`}>
-          <img alt="" src={logo} />
+          <Link to={'/'}>
+            <img alt="" src={logo} />
+          </Link>
         </div>
         <hr />
         <div className={`${styles["main-menu"]}`}>

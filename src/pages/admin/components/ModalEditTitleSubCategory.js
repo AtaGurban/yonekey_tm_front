@@ -43,8 +43,7 @@ const ModalEditTitleSubCategory = ({ show, onHide, updateState, categorys, title
   useEffect(()=>{
     setCurrentTitleCategory((titleCategory.filter(i => i.id === currentCategory?.titleCategoryId))[0])
   }, [currentCategory])
-  console.log(currentTitleCategory);
-  console.log(currentCategory);
+
   return (
     <div>
       <Modal show={show} onHide={onHide} size="lg" centered>
@@ -78,8 +77,9 @@ const ModalEditTitleSubCategory = ({ show, onHide, updateState, categorys, title
                 {currentTitleCategory?.name || "Kategoriýa görnüşini saýlaň"}
               </Dropdown.Toggle>
               <Dropdown.Menu>
-                {titleCategory.map((i)=>
+                {titleCategory.map((i, index)=>
                     <Dropdown.Item
+                    key={index}
                     onClick={() => {setCurrentCategory(null) ;setCurrentTitleCategory(i)}}
                     >
                         {i.name}
@@ -93,8 +93,9 @@ const ModalEditTitleSubCategory = ({ show, onHide, updateState, categorys, title
                 {currentCategory?.name || "Kategoriýa saýlaň"}
               </Dropdown.Toggle>
               <Dropdown.Menu>
-                {categorys.filter(j => j.titleCategoryId === currentTitleCategory?.id).map((i)=>
+                {categorys.filter(j => j.titleCategoryId === currentTitleCategory?.id).map((i, index)=>
                     <Dropdown.Item
+                    key={index}
                     onClick={() => setCurrentCategory(i)}
                     >
                         {i.name}

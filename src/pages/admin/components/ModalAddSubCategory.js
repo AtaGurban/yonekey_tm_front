@@ -1,14 +1,21 @@
 import { React, useContext, useState } from "react";
 import { Button, Form, Modal, Dropdown } from "react-bootstrap";
 import { Context } from "../../..";
-import { createCategory } from "../../../http/mainPageApi";
+import { createSubCategory } from "../../../http/mainPageApi";
 
-const ModalAddSubCategory = ({ show, onHide, updateState }) => {
+const ModalAddSubCategory = ({
+  show,
+  onHide,
+  updateState,
+  titleSubCategory,
+  categorys,
+}) => {
   const [img, setImg] = useState(null);
   const [link, setLink] = useState("");
   const [name, setName] = useState("");
-  const [categoryWithLink, setCategoryWithLink] = useState(false)
-  const [dropCategory, setDropCategory] = useState("");
+  const [dropTitleCategory, setDropTitleCategory] = useState(null);
+  const [dropCategory, setDropCategory] = useState(null);
+  const [droptitleSubCategory, setDropTitleSubCategory] = useState(null);
   const { category } = useContext(Context);
   const titleCategory = category.titleCategory;
   const selectFileLogo = (e) => {
@@ -20,17 +27,17 @@ const ModalAddSubCategory = ({ show, onHide, updateState }) => {
     formData.append("name", name);
     formData.append("link", link);
     formData.append("img", img);
-    formData.append("withLink", categoryWithLink);
-    formData.append("titleCategoryId", dropCategory.id);
-    await createCategory(formData).then((data) => {
+    formData.append("titleSubCategoryId", droptitleSubCategory.id);
+    await createSubCategory(formData).then((data) => {
       try {
         onHide();
         updateState();
         setLink("");
         setImg(null);
         setName("");
-        setCategoryWithLink(false)
-        setDropCategory('')
+        setDropCategory(null)
+        setDropTitleCategory(null)
+        setDropTitleSubCategory(null);
         alert("Üstünlikli ýerine ýetirildi");
       } catch (error) {
         console.log(error);
@@ -38,13 +45,12 @@ const ModalAddSubCategory = ({ show, onHide, updateState }) => {
       }
     });
   };
-
   return (
     <div>
       <Modal show={show} onHide={onHide} size="lg" centered>
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
-            Täze kategoriýa goşmak
+            Täze kiçi kategoriýa goşmak
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
@@ -56,44 +62,57 @@ const ModalAddSubCategory = ({ show, onHide, updateState }) => {
               onChange={(e) => setName(e.target.value)}
               placeholder={"Kategoriýanyň ady"}
             />
-            <Dropdown className={"mb-3"}>
-              <Dropdown.Toggle>
-                {categoryWithLink ? "Pod kategoriýasyz" : 'Pod kategoriýaly'}
-              </Dropdown.Toggle>
-              <Dropdown.Menu>
-                <Dropdown.Item
-                onClick={() => setCategoryWithLink(true)}
-                >
-                    Pod kategoriýasyz
-                </Dropdown.Item>
-                <Dropdown.Item
-                onClick={() => setCategoryWithLink(false)}
-                >
-                    Pod kategoriýaly
-                </Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
-            <hr/>
-            <Dropdown className={"mb-3"}>
-              <Dropdown.Toggle>
-                {dropCategory.name || "Kategoriýa görnüşini saýlaň"}
-              </Dropdown.Toggle>
-              <Dropdown.Menu>
-                {titleCategory.map((role, index) => (
-                  <Dropdown.Item
-                    onClick={() => setDropCategory(role)}
-                    key={index}
-                  >
-                    {role.name}
-                  </Dropdown.Item>
-                ))}
-              </Dropdown.Menu>
-            </Dropdown>
+            <div className="d-flex justify-content-around">
+              <Dropdown className={"mb-3"}>
+                <Dropdown.Toggle>
+                  {dropTitleCategory?.name || "Kategoriýa görnüşini saýlaň"}
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                  {titleCategory.map((role, index) => (
+                    <Dropdown.Item
+                      onClick={() => {setDropTitleCategory(role); setDropCategory(null); setDropTitleSubCategory(null)}}
+                      key={index}
+                    >
+                      {role.name}
+                    </Dropdown.Item>
+                  ))}
+                </Dropdown.Menu>
+              </Dropdown>
+              <Dropdown className={"mb-3"}>
+                <Dropdown.Toggle disabled={dropTitleCategory === null}>
+                  {dropCategory?.name || "Kategoriýa saýlaň"}
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                  {categorys.filter(i => i?.titleCategoryId === dropTitleCategory?.id).map((role, index) => (
+                    <Dropdown.Item
+                      onClick={() => {setDropCategory(role); setDropTitleSubCategory(null)}}
+                      key={index}
+                    >
+                      {role.name}
+                    </Dropdown.Item>
+                  ))}
+                </Dropdown.Menu>
+              </Dropdown>
+              <Dropdown className={"mb-3"}>
+                <Dropdown.Toggle disabled={dropCategory === null}>
+                  {droptitleSubCategory?.name || "Kiçi kategoriýa görnüşini saýlaň"}
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                  {titleSubCategory.filter(i=> i?.categoryId === dropCategory?.id).map((role, index) => (
+                    <Dropdown.Item
+                      onClick={() => setDropTitleSubCategory(role)}
+                      key={index}
+                    >
+                      {role.name}
+                    </Dropdown.Item>
+                  ))}
+                </Dropdown.Menu>
+              </Dropdown>
+            </div>
             <span className="mt-3 c-bold">Kategoriýa linki</span>
             <Form.Control
               className="my-3"
               value={link}
-              disabled={!categoryWithLink}
               onChange={(e) => setLink(e.target.value)}
               placeholder={"Kategoriýa linki"}
             />

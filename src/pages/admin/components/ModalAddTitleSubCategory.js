@@ -32,7 +32,7 @@ const ModalAddTitleSubCategory = ({ show, onHide, updateState, categorys, titleC
       }
     });
   };
-  console.log(titleCategory);
+
   return (
     <div>
       <Modal show={show} onHide={onHide} size="lg" centered>

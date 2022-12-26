@@ -1,23 +1,31 @@
 import { observer } from "mobx-react-lite";
 import React, { useEffect, useState, useContext } from "react";
 import Table from "react-bootstrap/Table";
-import { deleteSubCategory, getAllSubCategory } from "../../../http/mainPageApi";
+import { deleteSubCategory, getAllCategory, getAllSubCategory, getTitleSubCategory } from "../../../http/mainPageApi";
 import { Context } from "../../../index";
 import { listSubCategorys } from "../../../utils/adminHeads";
 import ModalAddSubCategory from "./ModalAddSubCategory";
-import ModalEditCategory from "./ModalEditCategory";
+import ModalEditSubCategory from "./ModalEditSubCategory";
 
 const AdminTableSubCategory = observer(() => {
   const [subCategorys, setSubCategorys] = useState([]);
+  const [titleSubCategory, setTitleSubCategory] = useState([])
+  const [categorys, setCategorys] = useState([])
   const [currentSubCategory, setCurrentSubCategory] = useState({});
   const [modalAddSubCategoryVisible, setModalAddSubCategoryVisible] = useState(false);
   const [modalEditSubCategoryVisible, setModalEditSubCategoryVisible] = useState(false);
-  const { user, category } = useContext(Context);
-  const titleCategory = category.titleCategory;
+  const { user } = useContext(Context);
+
   useEffect(() => {
     (async function () {
       await getAllSubCategory().then((data) => {
         setSubCategorys(data);
+      });
+      await getTitleSubCategory().then((data) => {
+        setTitleSubCategory(data);
+      });
+      await getAllCategory().then((data) => {
+        setCategorys(data);
       });
     })();
   }, []);
@@ -48,11 +56,13 @@ const AdminTableSubCategory = observer(() => {
       </div>
       <ModalAddSubCategory
         updateState={updateState}
+        categorys={categorys}
+        titleSubCategory={titleSubCategory}
         show={modalAddSubCategoryVisible}
         onHide={() => setModalAddSubCategoryVisible(false)}
       />
-      <ModalEditCategory
-        currentCategory={currentSubCategory}
+      <ModalEditSubCategory
+        currentSubCategory={currentSubCategory}
         updateState={updateState}
         show={modalEditSubCategoryVisible}
         onHide={() => setModalEditSubCategoryVisible(false)}
@@ -70,7 +80,7 @@ const AdminTableSubCategory = observer(() => {
             <tr key={index}>
               <td>{i.id}</td>
               <td>{i.name}</td>
-              <td>{(titleCategory.filter((j)=> j.id === i.titleCategoryId)[0])?.name}</td>
+              <td>{(titleSubCategory.filter((j)=> j.id === i.titleSubCategoryId)[0])?.name}</td>
               <td>{i.counter}</td>
               <td>{i.link ? i.link : 'ýok'}</td>
               <td>{i.createdAt}</td>

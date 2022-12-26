@@ -1,4 +1,5 @@
 export const MAIN_PAGE = '/'
+export const CATEGORY_PAGE = '/category'
 export const LOMAY_PAGE = '/lomay'
 export const DEVELOPERS_PAGE = '/developers'
 export const VIDEO_PAGE = '/video'

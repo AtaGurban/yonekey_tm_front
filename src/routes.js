@@ -1,13 +1,14 @@
 import Stream from "./components/Stream";
 import Admin from "./pages/admin/Admin";
 import Auth from "./pages/auth/Auth";
+import Category from "./pages/category/Category";
 import Developers from "./pages/developers/Developers";
 import Lomay from "./pages/lomay/Lomay";
 import Main from "./pages/main/Main";
 import FavVideo from "./pages/video/FavVideo";
 import Video from "./pages/video/Video";
 import Watched from "./pages/video/Watched";
-import { ADMIN_PAGE, DEVELOPERS_PAGE, FAV_VIDEO_PAGE, LOGiN_PAGE, LOMAY_PAGE, MAIN_PAGE, REGISTRATION_PAGE, VIDEO_PAGE, VIDEO_STREAM_PAGE, WATCHED_PAGE } from "./utils/pathConsts";
+import { ADMIN_PAGE, CATEGORY_PAGE, DEVELOPERS_PAGE, FAV_VIDEO_PAGE, LOGiN_PAGE, LOMAY_PAGE, MAIN_PAGE, REGISTRATION_PAGE, VIDEO_PAGE, VIDEO_STREAM_PAGE, WATCHED_PAGE } from "./utils/pathConsts";
 
 
 export const authRoutes = [
@@ -38,6 +39,10 @@ export const authRoutes = [
     {
         path: `${VIDEO_STREAM_PAGE}/:id`,
         Element: <Stream/>
+    },
+    {
+        path: `${CATEGORY_PAGE}/:id`,
+        Element: <Category/>
     },
 
 ]
@@ -78,6 +83,10 @@ export const publicRoutes = [
         path: `${VIDEO_STREAM_PAGE}/:id`,
         Element: <Stream/>
     },
+    {
+        path: `${CATEGORY_PAGE}/:id`,
+        Element: <Category/>
+    },
 ]
 export const adminRoutes = [
     {
@@ -111,6 +120,10 @@ export const adminRoutes = [
     {
         path: `${VIDEO_STREAM_PAGE}/:id`,
         Element: <Stream/>
+    },
+    {
+        path: `${CATEGORY_PAGE}/:id`,
+        Element: <Category/>
     },
 ]
 
