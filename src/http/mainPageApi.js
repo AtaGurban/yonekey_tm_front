@@ -16,8 +16,14 @@ export const createTitleSubCategory = async (item)=>{
     return data
 }
 
+
 export const createCategory = async (item)=>{
     const {data} = await $authhost.post('api/main-page/category', item)
+    return data
+}
+
+export const clickCategory = async (item)=>{
+    const {data} = await $host.post('api/main-page/category/click', item)
     return data
 }
 
@@ -38,6 +44,11 @@ export const deleteCategory = async (id)=>{
 
 export const createSubCategory = async (item)=>{
     const {data} = await $authhost.post('api/main-page/sub-category', item)
+    return data
+}
+
+export const clickSubCategory = async (item)=>{
+    const {data} = await $host.post('api/main-page/sub-category/click', item)
     return data
 }
 
@@ -128,12 +139,27 @@ export const updateBusiness = async (item)=>{
     const {data} = await $authhost.put('api/admin/business', item)
     return data
 }
+
+export const deleteBusiness = async (id)=>{
+    const {data} = await $authhost.delete(`api/admin/business?id=${id}`)
+    return data
+}
+
 export const clickBusiness = async (id)=>{
     const {data} = await $authhost.post('api/admin/business-click', {id})
     return data
 }
 
-export const deleteBusiness = async (id)=>{
-    const {data} = await $authhost.delete(`api/admin/business?id=${id}`)
+export const createMobileAds = async (item)=>{
+    const {data} = await $authhost.post('api/main-page/mobile-ads', item)
+    return data
+}
+export const getMobileAds = async ()=>{
+    const {data} = await $host.get('api/main-page/mobile-ads/get')
+    return data
+}
+
+export const deleteMobileAds = async (id)=>{
+    const {data} = await $authhost.delete(`api/main-page/mobile-ads?id=${id}`)
     return data
 }

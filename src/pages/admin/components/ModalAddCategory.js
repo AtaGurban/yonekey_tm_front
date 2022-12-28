@@ -57,7 +57,7 @@ const ModalAddCategory = ({ show, onHide, updateState }) => {
               placeholder={"Kategoriýanyň ady"}
             />
             <Dropdown className={"mb-3"}>
-              <Dropdown.Toggle>
+              <Dropdown.Toggle variant="outline-gray">
                 {categoryWithLink ? "Pod kategoriýasyz" : 'Pod kategoriýaly'}
               </Dropdown.Toggle>
               <Dropdown.Menu>

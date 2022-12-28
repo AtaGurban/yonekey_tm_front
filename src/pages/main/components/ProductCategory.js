@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { clickCategory } from "../../../http/mainPageApi";
 import { CATEGORY_PAGE } from "../../../utils/pathConsts";
 
 const ProductCategory = ({ titleCategory }) => {
@@ -8,14 +9,16 @@ const ProductCategory = ({ titleCategory }) => {
       <div className="category_title mb-3">
         <h3>{titleCategory.name}</h3>
       </div>
-      <div className="mx-3 d-flex justify-content-around align-items-center flex-wrap">
-        {titleCategory.category.map((i, index) =>
+      <div className="mx-3 d-flex justify-content-between align-items-center flex-wrap">
+        {titleCategory.category.sort((a, b) => {
+                return b.counter - a.counter;
+              }).map((i, index) =>
           i.withLink ? (
             <div
               key={index}
-              className="wrapper-category-box my-2 text-center d-block"
+              className="wrapper-category-box col-4 my-2 text-center d-block"
             >
-              <a target={'blank'} href={i.link}>
+              <a onClick={async()=> await clickCategory({id: i.id})} target={'blank'} href={i.link}>
                 <div className="category-box mx-auto">
                   <img
                     // style={{ height: 250 }}
@@ -29,9 +32,9 @@ const ProductCategory = ({ titleCategory }) => {
           ) : (
             <div
               key={index}
-              className="wrapper-category-box my-2 text-center d-block"
+              className="wrapper-category-box col-4 my-2 text-center d-block"
             >
-              <Link to={`${CATEGORY_PAGE}/${i.id}`}>
+              <Link onClick={async()=> await clickCategory({id: i.id})} to={`${CATEGORY_PAGE}/${i.id}`}>
                 <div className="category-box mx-auto">
                   <img
                     // style={{ height: 250 }}

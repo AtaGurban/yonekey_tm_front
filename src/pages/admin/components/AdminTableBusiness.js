@@ -1,7 +1,6 @@
 import { observer } from "mobx-react-lite";
 import React, { useEffect, useState, useContext } from "react";
 import Table from "react-bootstrap/Table";
-import { deleteBanner } from "../../../http/bannerApi";
 import { deleteBusiness, getBusiness } from "../../../http/mainPageApi";
 import { Context } from "../../../index";
 import { listBusiness } from "../../../utils/adminHeads";

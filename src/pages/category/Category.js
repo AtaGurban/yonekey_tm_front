@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { MoonLoader } from 'react-spinners';
 import { getOneCategoryItems } from '../../http/mainPageApi';
 import styles from "./category.module.css";
+import ProductSubCategory from './ProductSubCategory';
 
 const Category = () => {
     const [loading, setLoading] = useState(true);
@@ -16,6 +17,7 @@ const Category = () => {
         }).finally(() => {setLoading(false)});
       })();
     }, [params]);
+    console.log(titleSubCategorys);
     if (loading) {
         return (
           <div
@@ -32,7 +34,11 @@ const Category = () => {
       }
     return (
         <div>
-            
+            {
+              titleSubCategorys.map((i)=>
+                <ProductSubCategory key={i.id} titleSubCategory={i}/>
+              )
+            }
         </div>
     );
 };

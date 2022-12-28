@@ -176,3 +176,33 @@ video{
       height: 65px;
   }
 }
+
+
+.sub-category-box{
+  width: 130px;
+  display: flex;
+  height: 130px;
+  align-items: center;
+  justify-content: center;
+  background: #F6F4F7;
+}
+
+.sub-category-box img {
+  width: 90%;
+  object-fit: cover;
+  transition: all .2s linear;
+}
+
+.sub-category-box img:hover {
+  transform: scale(1.05);
+}
+
+@media (max-width:500px) {
+  .wrapper-category-box{
+    max-width: 100px;
+  }
+  .sub-category-box{
+      width: 65px;
+      height: 65px;
+  }
+}

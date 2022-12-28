@@ -5,7 +5,7 @@ export const bannersMenuItems = [
     'Baş bannerler'
 ]
 export const mainPageMenuItems = [
-    'Biznesler', 'Slaýderler', 'Kategoriýa görnüşleri', 'Kategoriýalar', 'Kiçi kategoriýa görnüşleri', 'Kiçi kategoriýalar'
+    'Biznesler', 'Slaýderler', 'Kategoriýa görnüşleri', 'Kategoriýalar', 'Kiçi kategoriýa görnüşleri', 'Kiçi kategoriýalar', 'Mobil reklamalar'
 ]
 export const marketingMenuItems = [
     

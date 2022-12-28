@@ -27,3 +27,6 @@ export const listCategorys = [
 export const listSubCategorys = [
     'Id', 'Ady', 'Degişli kiçi kategoriýa görnüşi' ,'Basylan sany', 'Link', 'Döredilen wagty', 'Düwmeler'
 ]
+export const listMobileAds = [
+    'Id', 'Ady', 'Link' , 'Döredilen wagty', 'Düwmeler'
+]
