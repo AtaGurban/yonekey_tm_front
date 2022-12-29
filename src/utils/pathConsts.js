@@ -1,6 +1,7 @@
 export const MAIN_PAGE = '/'
 export const CATEGORY_PAGE = '/category'
 export const LOMAY_PAGE = '/lomay'
+export const MARKETING_PAGE = '/marketing'
 export const DEVELOPERS_PAGE = '/developers'
 export const VIDEO_PAGE = '/video'
 export const WATCHED_PAGE = '/video/watched'

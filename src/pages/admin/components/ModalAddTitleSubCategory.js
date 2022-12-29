@@ -10,8 +10,8 @@ const ModalAddTitleSubCategory = ({ show, onHide, updateState, categorys, titleC
 
   const createTitleSubCategoryFunc = async () => {
     const formData = new FormData();
-    if (number > 6){
-      alert("Nomer 6 ýokary bolmaly däl");
+    if (number > 3){
+      alert("Nomer 3 ýokary bolmaly däl");
       return false;
     }
     formData.append("number", number);
@@ -68,6 +68,7 @@ const ModalAddTitleSubCategory = ({ show, onHide, updateState, categorys, titleC
               <Dropdown.Menu>
                 {titleCategory.map((i)=>
                     <Dropdown.Item
+                    key={i.id}
                     onClick={() => {setCurrentCategory(null) ;setCurrentTitleCategory(i)}}
                     >
                         {i.name}

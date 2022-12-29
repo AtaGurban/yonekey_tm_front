@@ -16,6 +16,11 @@ const Main = () => {
     await clickBusiness(id);
   };
   const firstTitleCategory = category.titleCategory.filter((i)=> i.number === 1)
+  const secondTitleCategory = category.titleCategory.filter((i)=> i.number === 2)
+  const thirdTitleCategory = category.titleCategory.filter((i)=> i.number === 3)
+  const fourTitleCategory = category.titleCategory.filter((i)=> i.number === 4)
+  const fiveTitleCategory = category.titleCategory.filter((i)=> i.number === 5)
+  const sixTitleCategory = category.titleCategory.filter((i)=> i.number === 6)
   useEffect(() => {
     (async function () {
       await getBusiness()
@@ -92,6 +97,15 @@ const Main = () => {
         </div>
         <Slider slider={(sliders.filter(i=> i.number === 2))[0]}/>
         <ProductCategory titleCategory={firstTitleCategory[0]}/>
+        <ProductCategory titleCategory={secondTitleCategory[0]}/>
+        <Slider slider={(sliders.filter(i=> i.number === 3))[0]}/>
+        <ProductCategory titleCategory={thirdTitleCategory[0]}/>
+        <Slider slider={(sliders.filter(i=> i.number === 4))[0]}/>
+        <ProductCategory titleCategory={fourTitleCategory[0]}/>
+        <Slider slider={(sliders.filter(i=> i.number === 5))[0]}/>
+        <ProductCategory titleCategory={fiveTitleCategory[0]}/>
+        <Slider slider={(sliders.filter(i=> i.number === 6))[0]}/>
+        <ProductCategory titleCategory={sixTitleCategory[0]}/>
       </div>
     </div>
   );

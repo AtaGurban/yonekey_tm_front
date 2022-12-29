@@ -37,8 +37,8 @@ const ModalAddSlider = ({ show, onHide, updateState }) => {
 
   const createSliderFunc = async () => {
     const formData = new FormData();
-    if (number > 6) {
-      alert("Nomer 6 ýokary bolmaly däl");
+    if (number > 7) {
+      alert("Nomer 7 ýokary bolmaly däl");
       return false;
     }
     formData.append("number", number);

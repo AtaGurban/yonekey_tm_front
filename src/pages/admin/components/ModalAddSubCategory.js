@@ -55,17 +55,17 @@ const ModalAddSubCategory = ({
         </Modal.Header>
         <Modal.Body>
           <Form>
-            <span className="mt-3 c-bold">Kategoriýanyň ady</span>
+            <span className="mt-3 c-bold">Kiçi kategoriýanyň ady</span>
             <Form.Control
               className="my-3"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              placeholder={"Kategoriýanyň ady"}
+              placeholder={"Kiçi kategoriýanyň ady"}
             />
             <div className="d-flex justify-content-around">
               <Dropdown className={"mb-3"}>
                 <Dropdown.Toggle>
-                  {dropTitleCategory?.name || "Kategoriýa görnüşini saýlaň"}
+                  {dropTitleCategory?.name || "Kici kategoriýa görnüşini saýlaň"}
                 </Dropdown.Toggle>
                 <Dropdown.Menu>
                   {titleCategory.map((role, index) => (
@@ -80,7 +80,7 @@ const ModalAddSubCategory = ({
               </Dropdown>
               <Dropdown className={"mb-3"}>
                 <Dropdown.Toggle disabled={dropTitleCategory === null}>
-                  {dropCategory?.name || "Kategoriýa saýlaň"}
+                  {dropCategory?.name || "Kici kategoriýa saýlaň"}
                 </Dropdown.Toggle>
                 <Dropdown.Menu>
                   {categorys.filter(i => i?.titleCategoryId === dropTitleCategory?.id).map((role, index) => (
@@ -109,14 +109,14 @@ const ModalAddSubCategory = ({
                 </Dropdown.Menu>
               </Dropdown>
             </div>
-            <span className="mt-3 c-bold">Kategoriýa linki</span>
+            <span className="mt-3 c-bold">Kiçi kategoriýa linki</span>
             <Form.Control
               className="my-3"
               value={link}
               onChange={(e) => setLink(e.target.value)}
-              placeholder={"Kategoriýa linki"}
+              placeholder={"Kiçi kategoriýa linki"}
             />
-            <span className="c-bold">Kategoriýa surat saýla</span>
+            <span className="c-bold">Kiçi kategoriýa surat saýla</span>
             <Form.Control
               className="my-2"
               type="file"

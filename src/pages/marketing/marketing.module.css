@@ -1,0 +1,95 @@
+.start {
+    float: left;
+    padding: 10px;
+    width: 100%;
+    margin: 0;
+    background-color: rgb(0, 0, 0);
+}
+
+
+@media screen and (max-width: 500px){
+    .start {
+        padding: 15px;
+    } 
+}
+
+.link {
+    float: left;
+    width: 100%;
+}
+
+.link_mini {
+    padding-top: 2%;
+    text-align: center;
+}
+
+.link_mini img {
+    object-fit: cover;
+    width: 20%;
+    height: 100%;
+}
+
+.link_menu {
+    float: left;
+    width: 100%;
+    padding: 3%;
+}
+
+.link_menu_mini {
+    float: left;
+    width: 80%;
+    margin-top: 10%;
+}
+
+.link_menu_second_mini {
+    float: left;
+    width: 100%;
+    text-align: center;
+    margin-top: 5%;
+}
+
+.link_menu_mini_1_1 {
+    display: block;
+}
+
+.link_menu_mini_1_2 {
+    float: left;
+    width: 80%;
+}
+
+.link_menu_mini h1 {
+    color: rgb(255, 255, 255);
+    font-size: 85px;
+    padding: 0;
+    margin: 0;
+}
+
+.animate {
+    float: left;
+    opacity: 1;
+    animation: scroll 2s;
+}
+
+.link_menu_mini_1_2 p {
+    color: rgb(255, 255, 255);
+}
+
+.animate_1 {
+    float: left;
+    opacity: 1;
+    animation: scroll 5s;
+}
+
+
+.img_mini_menu {
+    float: left;
+    width: 100%;
+    padding-top: 5%;
+    animation: overflov 3s infinite alternate;
+}
+
+.img_mini_menu img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}

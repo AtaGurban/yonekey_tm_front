@@ -7,10 +7,10 @@ const ProductCategory = ({ titleCategory }) => {
   return (
     <div className="my-4 container">
       <div className="category_title mb-3">
-        <h3>{titleCategory.name}</h3>
+        <h3>{titleCategory?.name}</h3>
       </div>
       <div className="mx-3 d-flex justify-content-between align-items-center flex-wrap">
-        {titleCategory.category.sort((a, b) => {
+        {titleCategory?.category?.sort((a, b) => {
                 return b.counter - a.counter;
               }).map((i, index) =>
           i.withLink ? (

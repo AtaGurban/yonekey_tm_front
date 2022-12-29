@@ -148,6 +148,7 @@ video{
   height: 130px;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
   background: #F6F4F7;
   border-radius: 50%;
 }
@@ -172,8 +173,8 @@ video{
     max-width: 100px;
   }
   .category-box{
-      width: 65px;
-      height: 65px;
+      width: 90px;
+      height: 90px;
   }
 }
 
@@ -185,6 +186,7 @@ video{
   align-items: center;
   justify-content: center;
   background: #F6F4F7;
+  overflow: hidden;
 }
 
 .sub-category-box img {
@@ -202,7 +204,7 @@ video{
     max-width: 100px;
   }
   .sub-category-box{
-      width: 65px;
-      height: 65px;
+      width: 90px;
+      height: 90px;
   }
 }

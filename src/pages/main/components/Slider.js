@@ -18,12 +18,12 @@ const Slider = ({ slider }) => {
     thisMobile = true
   }
   return (
-        <Carousel className="my-4" axis="horizontal" centerSlidePercentage={100} autoPlay showStatus={false} centerMode swipeScrollTolerance={5} emulateTouch showThumbs={false} swipeable={true} showIndicators={false} infiniteLoop={true}>
+        <Carousel className="my-2" axis="horizontal" centerSlidePercentage={100} autoPlay showStatus={false} centerMode swipeScrollTolerance={5} emulateTouch showThumbs={false} swipeable={true} showIndicators={false} infiniteLoop={true}>
           {slider?.img.map((i) => (
-            <div key={i.id}>
+            <div key={i?.id}>
               <img
                 style={{minHeight: '150px'}}
-                src={`${process.env.REACT_APP_API_URL}api/static/${(thisMobile ? i.mobileImg : i.webImg)}`}
+                src={`${process.env.REACT_APP_API_URL}api/static/${(thisMobile ? i?.mobileImg : i?.webImg)}`}
                 alt=""
               />
               {/* <p className="legend">{slider.text}</p> */}

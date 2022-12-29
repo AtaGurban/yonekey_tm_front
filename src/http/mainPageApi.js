@@ -103,7 +103,7 @@ export const deleteTitleSubCategory = async (id)=>{
 }
 
 export const updateTitleSubCategory = async (item)=>{
-    const {data} = await $authhost.post(`api/main-page/title-sub-category`, item)
+    const {data} = await $authhost.put(`api/main-page/title-sub-category`, item)
     return data
 }
 
