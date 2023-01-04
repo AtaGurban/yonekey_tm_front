@@ -22,7 +22,6 @@ const Category = () => {
         }).finally(() => {setLoading(false)});
       })();
     }, [params]);
-    console.log(titleSubCategorys);
     if (loading) {
         return (
           <div

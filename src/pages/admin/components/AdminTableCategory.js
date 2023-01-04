@@ -3,6 +3,8 @@ import React, { useEffect, useState, useContext } from "react";
 import Table from "react-bootstrap/Table";
 import { deleteCategory, getAllCategory } from "../../../http/mainPageApi";
 import { Context } from "../../../index";
+import moment from "moment";
+import "moment/locale/tk";
 import { listCategorys } from "../../../utils/adminHeads";
 import ModalAddCategory from "./ModalAddCategory";
 import ModalEditCategory from "./ModalEditCategory";
@@ -74,7 +76,7 @@ const AdminTableCategory = observer(() => {
               <td>{i.counter}</td>
               <td>{i.withLink ? 'Hawa' : 'Ýok'}</td>
               <td>{i.link ? i.link : 'ýok'}</td>
-              <td>{i.createdAt}</td>
+              <td>{moment(i.createdAt).format("LLLL")}</td>
               <td>
                 {
                   <div className="d-flex justify-content-center">

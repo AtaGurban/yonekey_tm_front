@@ -5,6 +5,8 @@ import { listVideos } from "../../../utils/adminHeads";
 import {Context} from '../../../index'
 import ModalEditVideo from "./ModalEditVideo";
 import { observer } from "mobx-react-lite";
+import moment from "moment";
+import "moment/locale/tk";
 
 const AdminTableVideo = observer(() => {
   const [videoList, setVideoList] = useState([]);
@@ -55,7 +57,7 @@ const AdminTableVideo = observer(() => {
               <td>{i.id}</td>
               <td>{i.name}</td>
               <td>{i.author}</td>
-              <td>{i.createdAt}</td>
+              <td>{moment(i.createdAt).format("LLLL")}</td>
               <td>
                 {
                   <div className="d-flex justify-content-center">

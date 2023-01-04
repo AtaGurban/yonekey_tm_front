@@ -6,6 +6,8 @@ import { Context } from "../../../index";
 import { listSubCategorys } from "../../../utils/adminHeads";
 import ModalAddSubCategory from "./ModalAddSubCategory";
 import ModalEditSubCategory from "./ModalEditSubCategory";
+import moment from "moment";
+import "moment/locale/tk";
 
 const AdminTableSubCategory = observer(() => {
   const [subCategorys, setSubCategorys] = useState([]);
@@ -83,7 +85,7 @@ const AdminTableSubCategory = observer(() => {
               <td>{(titleSubCategory.filter((j)=> j.id === i.titleSubCategoryId)[0])?.name}</td>
               <td>{i.counter}</td>
               <td>{i.link ? i.link : 'ýok'}</td>
-              <td>{i.createdAt}</td>
+              <td>{moment(i.createdAt).format("LLLL")}</td>
               <td>
                 {
                   <div className="d-flex justify-content-center">

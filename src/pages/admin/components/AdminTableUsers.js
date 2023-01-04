@@ -7,6 +7,8 @@ import { Context } from "../../../index";
 import { listUsers } from "../../../utils/adminHeads";
 import ModalAddUser from "./ModalAddUser";
 import ModalEditUser from "./ModalEditUser";
+import moment from "moment";
+import "moment/locale/tk";
 
 const AdminTableUsers = observer(() => {
   const [users, setUsers] = useState([]);
@@ -102,7 +104,7 @@ const AdminTableUsers = observer(() => {
               <td>{i.first_name}</td>
               <td>{i.role}</td>
               <td>{i.phone}</td>
-              <td>{i.createdAt}</td>
+              <td>{moment(i.createdAt).format("LLLL")}</td>
               <td>
                 {
                   <div className="d-flex justify-content-center">

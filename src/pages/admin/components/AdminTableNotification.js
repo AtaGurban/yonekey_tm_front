@@ -3,38 +3,38 @@ import React, { useEffect, useState, useContext } from "react";
 import Table from "react-bootstrap/Table";
 import moment from "moment";
 import "moment/locale/tk";
-import { deleteBusiness, getBusiness } from "../../../http/mainPageApi";
+import { deleteNotification, getNotification } from "../../../http/mainPageApi";
 import { Context } from "../../../index";
-import { listBusiness } from "../../../utils/adminHeads";
-import ModalAddBusiness from "./ModalAddBusiness";
-import ModalEditBusiness from "./ModalEditBusiness";
+import { listNotification } from "../../../utils/adminHeads";
+import ModalAddNotification from "./ModalAddNotification";
+import ModalEditNotification from "./ModalEditNotification";
 
-const AdminTableBusiness = observer(() => {
-  const [business, setBusiness] = useState([]);
-  const [currentBusiness, setCurrentBusiness] = useState({});
-  const [modalAddBusinessVisible, setModalAddBusinessVisible] = useState(false);
-  const [modalEditBusinessVisible, setModalEditBusinessVisible] = useState(false);
+const AdminTableNotification = observer(() => {
+  const [notification, setNotification] = useState([]);
+  const [currentNotification, setCurrentNotification] = useState({});
+  const [modalAddNotificationVisible, setModalAddNotificationVisible] = useState(false);
+  const [modalEditNotificationVisible, setModalEditNotificationVisible] = useState(false);
   const { user } = useContext(Context);
 
   useEffect(() => { 
     (async function () {
-      await getBusiness().then((data) => {
-        setBusiness(data);
+      await getNotification().then((data) => {
+        setNotification(data);
       });
     })();
   }, []);
-  const removeBusinessFunc = async (id) => {
-    await deleteBusiness(id).then(async () => {
+  const removeNotificationFunc = async (id) => {
+    await deleteNotification(id).then(async () => {
       await updateState();
     });
   };
-  const editBusiness = (business) => {
-    setCurrentBusiness(business)
-    setModalEditBusinessVisible(true)
+  const editNotification = (notification) => {
+    setCurrentNotification(notification)
+    setModalEditNotificationVisible(true)
   };
   const updateState = async () => {
-    await getBusiness().then((data) => {
-      setBusiness(data);
+    await getNotification().then((data) => {
+      setNotification(data);
     });
   };
   return (
@@ -42,51 +42,51 @@ const AdminTableBusiness = observer(() => {
       <div className="ms-auto text-end mb-3">
         <button
           updateState={updateState}
-          onClick={() => setModalAddBusinessVisible(true)}
+          onClick={() => setModalAddNotificationVisible(true)}
           className="btn btn-warning"
         >
-          Täze biznes goşmak
+          Täze bildiriş goşmak
         </button>
       </div>
-      <ModalAddBusiness
+      <ModalAddNotification
         updateState={updateState}
-        show={modalAddBusinessVisible}
-        onHide={() => setModalAddBusinessVisible(false)}
+        show={modalAddNotificationVisible}
+        onHide={() => setModalAddNotificationVisible(false)}
       />
-      <ModalEditBusiness
-        business={currentBusiness}
+      <ModalEditNotification
+        notification={currentNotification}
         updateState={updateState}
-        show={modalEditBusinessVisible}
-        onHide={() => setModalEditBusinessVisible(false)}
+        show={modalEditNotificationVisible}
+        onHide={() => setModalEditNotificationVisible(false)}
       />
       <Table bordered hover responsive>
         <thead>
           <tr>
-            {listBusiness?.map((i, index) => (
+            {listNotification?.map((i, index) => (
               <th key={index}>{i}</th>
             ))}
           </tr>
         </thead>
         <tbody>
-          {business?.map((i, index) => (
+          {notification?.map((i, index) => (
             <tr key={index}>
               <td>{i.id}</td>
-              <td>{i.name}</td>
-              <td>{i.counter}</td>
-              <td>{i.link}</td>
+              <td>{i.title}</td>
+              <td>{moment(i.date).format("LLLL")}</td>
+              <td>{i.type}</td>
               <td>{moment(i.createdAt).format("LLLL")}</td>
               <td>
                 {
                   <div className="d-flex justify-content-center">
                     <button
-                      onClick={() => editBusiness(i)}
+                      onClick={() => editNotification(i)}
                       className="btn btn-primary mx-1"
                       title="Üýtgetmek"
                     >
                       <i className="fas fa-cogs"></i>
                     </button>
                     <button
-                      onClick={() => removeBusinessFunc(i.id)}
+                      onClick={() => removeNotificationFunc(i.id)}
                       disabled={user.user.role !== "SUPERADMIN"}
                       className="btn btn-danger"
                       title="Pozmak"
@@ -104,4 +104,4 @@ const AdminTableBusiness = observer(() => {
   );
 });
 
-export default AdminTableBusiness;
+export default AdminTableNotification;

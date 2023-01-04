@@ -49,7 +49,7 @@ const ModalAddMobileAds = ({ show, onHide, updateState }) => {
               onChange={(e) => setName(e.target.value)}
               placeholder={"Reklamanyň ady"}
             />
-            <span className="mt-3 c-bold">Reklamanyň linki</span>
+            <span className="mt-3 c-bold">Reklamanyň linki (https:// bilen başlamaly)</span>
             <Form.Control
               className="my-3"
               value={link}

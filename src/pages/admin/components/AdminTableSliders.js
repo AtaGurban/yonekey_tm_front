@@ -5,6 +5,8 @@ import { deleteSlider, getAllSlider } from "../../../http/mainPageApi";
 import { Context } from "../../../index";
 import { listSliders } from "../../../utils/adminHeads";
 import ModalAddSlider from "./ModalAddSlider";
+import moment from "moment";
+import "moment/locale/tk";
 // import ModalEditSlider from "./ModalEditSlider";
 
 const AdminTableSliders = observer(() => {
@@ -70,7 +72,7 @@ const AdminTableSliders = observer(() => {
             <tr key={index}>
               <td>{i.id}</td>
               <td>{i.number}</td>
-              <td>{i.createdAt}</td>
+              <td>{moment(i.createdAt).format("LLLL")}</td>
               <td>
                 {
                   <div className="d-flex justify-content-center">

@@ -1,6 +1,8 @@
 import { observer } from "mobx-react-lite";
 import React, { useEffect, useState, useContext } from "react";
 import Table from "react-bootstrap/Table";
+import moment from "moment";
+import "moment/locale/tk";
 import { deleteBanner, getBanner } from "../../../http/bannerApi";
 import { getBusiness } from "../../../http/mainPageApi";
 import { Context } from "../../../index";
@@ -66,7 +68,7 @@ const AdminTableBanner = observer(() => {
             <tr key={index}>
               <td>{i.id}</td>
               <td>{i.page}</td>
-              <td>{i.createdAt}</td>
+              <td>{moment(i.createdAt).format("LLLL")}</td>
               <td>
                 {
                   <div className="d-flex justify-content-center">

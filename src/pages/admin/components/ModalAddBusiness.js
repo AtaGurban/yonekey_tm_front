@@ -49,7 +49,7 @@ const ModalAddBusiness = ({ show, onHide, updateState }) => {
               onChange={(e) => setName(e.target.value)}
               placeholder={"Biznesiň ady"}
             />
-            <span className="mt-3 c-bold">Biznesiň linki</span>
+            <span className="mt-3 c-bold">Biznesiň linki (https:// bilen başlamaly)</span>
             <Form.Control
               className="my-3"
               value={link}

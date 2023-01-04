@@ -163,3 +163,39 @@ export const deleteMobileAds = async (id)=>{
     const {data} = await $authhost.delete(`api/main-page/mobile-ads?id=${id}`)
     return data
 }
+
+export const createNotification = async (item)=>{
+    const {data} = await $authhost.post('api/main-page/notification', item)
+    return data
+}
+export const getNotification = async ()=>{
+    const {data} = await $host.get('api/main-page/notification')
+    return data
+}
+export const updateNotification = async (item)=>{
+    const {data} = await $authhost.put('api/main-page/notification', item)
+    return data
+}
+
+export const deleteNotification = async (id)=>{
+    const {data} = await $authhost.delete(`api/main-page/notification?id=${id}`)
+    return data
+}
+
+export const createEbay = async (item)=>{
+    const {data} = await $authhost.post('api/main-page/ebay', item)
+    return data
+}
+export const getEbay = async ()=>{
+    const {data} = await $host.get('api/main-page/ebay')
+    return data
+}
+export const updateEbay = async (item)=>{
+    const {data} = await $authhost.put('api/main-page/ebay', item)
+    return data
+}
+
+export const deleteEbay = async (id)=>{
+    const {data} = await $authhost.delete(`api/main-page/ebay?id=${id}`)
+    return data
+}

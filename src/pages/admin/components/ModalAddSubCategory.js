@@ -109,7 +109,7 @@ const ModalAddSubCategory = ({
                 </Dropdown.Menu>
               </Dropdown>
             </div>
-            <span className="mt-3 c-bold">Kiçi kategoriýa linki</span>
+            <span className="mt-3 c-bold">Kiçi kategoriýa linki (https:// bilen başlamaly)</span>
             <Form.Control
               className="my-3"
               value={link}

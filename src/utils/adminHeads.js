@@ -30,3 +30,9 @@ export const listSubCategorys = [
 export const listMobileAds = [
     'Id', 'Ady', 'Link' , 'Döredilen wagty', 'Düwmeler'
 ]
+export const listNotification = [
+    'Id', 'Ady', 'Wagty' , 'Görnüşi', 'Döredilen wagty', 'Düwmeler'
+]
+export const listEbay = [
+    'Id', 'Ady', 'Link' , 'Beýany', 'Döredilen wagty', 'Düwmeler'
+]

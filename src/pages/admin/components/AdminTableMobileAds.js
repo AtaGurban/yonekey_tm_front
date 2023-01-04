@@ -6,7 +6,8 @@ import { Context } from "../../../index";
 import { listMobileAds } from "../../../utils/adminHeads";
 import ModalAddMobileAds from "./ModalAddMobileAds";
 import ModalShowMobileAds from "./ModalShowMobileAds";
-
+import moment from "moment";
+import "moment/locale/tk";
 
 const AdminTableMobileAds = observer(() => {
   const [mobilAds, setMobilAds] = useState([]);
@@ -68,7 +69,7 @@ const AdminTableMobileAds = observer(() => {
               <td>{i.id}</td>
               <td>{i.name}</td>
               <td>{i.link}</td>
-              <td>{i.createdAt}</td>
+              <td>{moment(i.createdAt).format("LLLL")}</td>
               <td>
                 {
                   <div className="d-flex justify-content-center">

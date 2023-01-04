@@ -5,7 +5,9 @@ import styles from "./admin.module.css";
 import AdminTableBanner from "./components/AdminTableBanners";
 import AdminTableBusiness from "./components/AdminTableBusiness";
 import AdminTableCategory from "./components/AdminTableCategory";
+import AdminTableEbay from "./components/AdminTableEbay";
 import AdminTableMobileAds from "./components/AdminTableMobileAds";
+import AdminTableNotification from "./components/AdminTableNotification";
 import AdminTableSliders from "./components/AdminTableSliders";
 import AdminTableSubCategory from "./components/AdminTableSubCategory";
 import AdminTableTitleCategory from "./components/AdminTableTitleCategory";
@@ -62,6 +64,12 @@ const Admin = () => {
         break;
       case "Mobil reklamalar":
         setAdminState(<AdminTableMobileAds/>);
+        break;
+      case "Bildirişler":
+        setAdminState(<AdminTableNotification/>);
+        break;
+      case "Ulanyjy menýulary":
+        setAdminState(<AdminTableEbay/>);
         break;
 
       default:

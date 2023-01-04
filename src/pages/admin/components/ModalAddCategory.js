@@ -89,7 +89,7 @@ const ModalAddCategory = ({ show, onHide, updateState }) => {
                 ))}
               </Dropdown.Menu>
             </Dropdown>
-            <span className="mt-3 c-bold">Kategoriýa linki</span>
+            <span className="mt-3 c-bold">Kategoriýa linki (https:// bilen başlamaly)</span>
             <Form.Control
               className="my-3"
               value={link}

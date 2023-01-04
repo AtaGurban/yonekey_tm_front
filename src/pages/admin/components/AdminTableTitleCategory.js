@@ -5,6 +5,8 @@ import { deleteTitleCategory, getTitleCategory } from "../../../http/mainPageApi
 import { Context } from "../../../index";
 import { listTitleCategorys } from "../../../utils/adminHeads";
 import ModalAddTitleCategory from "./ModalAddTitleCategory";
+import moment from "moment";
+import "moment/locale/tk";
 import ModalEditTitleCategory from "./ModalEditTitleCategory";
 
 const AdminTableTitleCategory = observer(() => {
@@ -71,7 +73,7 @@ const AdminTableTitleCategory = observer(() => {
               <td>{i.id}</td>
               <td>{i.name}</td>
               <td>{i.number}</td>
-              <td>{i.createdAt}</td>
+              <td>{moment(i.createdAt).format("LLLL")}</td>
               <td>
                 {
                   <div className="d-flex justify-content-center">

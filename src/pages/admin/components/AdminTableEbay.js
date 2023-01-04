@@ -3,38 +3,39 @@ import React, { useEffect, useState, useContext } from "react";
 import Table from "react-bootstrap/Table";
 import moment from "moment";
 import "moment/locale/tk";
-import { deleteBusiness, getBusiness } from "../../../http/mainPageApi";
+import { deleteEbay, getEbay } from "../../../http/mainPageApi";
 import { Context } from "../../../index";
-import { listBusiness } from "../../../utils/adminHeads";
-import ModalAddBusiness from "./ModalAddBusiness";
-import ModalEditBusiness from "./ModalEditBusiness";
+import { listEbay } from "../../../utils/adminHeads";
 
-const AdminTableBusiness = observer(() => {
-  const [business, setBusiness] = useState([]);
-  const [currentBusiness, setCurrentBusiness] = useState({});
-  const [modalAddBusinessVisible, setModalAddBusinessVisible] = useState(false);
-  const [modalEditBusinessVisible, setModalEditBusinessVisible] = useState(false);
+import ModalAddEbay from "./ModalAddEbay";
+import ModalEditEbay from "./ModalEditEbay";
+
+const AdminTableEbay = observer(() => {
+  const [ebay, setEbay] = useState([]);
+  const [currentEbay, setCurrentEbay] = useState({});
+  const [modalAddEbayVisible, setModalAddEbayVisible] = useState(false);
+  const [modalEditEbayVisible, setModalEditEbayVisible] = useState(false);
   const { user } = useContext(Context);
 
   useEffect(() => { 
     (async function () {
-      await getBusiness().then((data) => {
-        setBusiness(data);
+      await getEbay().then((data) => {
+        setEbay(data);
       });
     })();
   }, []);
-  const removeBusinessFunc = async (id) => {
-    await deleteBusiness(id).then(async () => {
+  const removeEbayFunc = async (id) => {
+    await deleteEbay(id).then(async () => {
       await updateState();
     });
   };
-  const editBusiness = (business) => {
-    setCurrentBusiness(business)
-    setModalEditBusinessVisible(true)
+  const editEbay = (notification) => {
+    setCurrentEbay(notification)
+    setModalEditEbayVisible(true)
   };
   const updateState = async () => {
-    await getBusiness().then((data) => {
-      setBusiness(data);
+    await getEbay().then((data) => {
+      setEbay(data);
     });
   };
   return (
@@ -42,51 +43,51 @@ const AdminTableBusiness = observer(() => {
       <div className="ms-auto text-end mb-3">
         <button
           updateState={updateState}
-          onClick={() => setModalAddBusinessVisible(true)}
+          onClick={() => setModalAddEbayVisible(true)}
           className="btn btn-warning"
         >
-          Täze biznes goşmak
+          Täze menýu goşmak
         </button>
       </div>
-      <ModalAddBusiness
+      <ModalAddEbay
         updateState={updateState}
-        show={modalAddBusinessVisible}
-        onHide={() => setModalAddBusinessVisible(false)}
+        show={modalAddEbayVisible}
+        onHide={() => setModalAddEbayVisible(false)}
       />
-      <ModalEditBusiness
-        business={currentBusiness}
+      <ModalEditEbay
+        ebay={currentEbay}
         updateState={updateState}
-        show={modalEditBusinessVisible}
-        onHide={() => setModalEditBusinessVisible(false)}
+        show={modalEditEbayVisible}
+        onHide={() => setModalEditEbayVisible(false)}
       />
       <Table bordered hover responsive>
         <thead>
           <tr>
-            {listBusiness?.map((i, index) => (
+            {listEbay?.map((i, index) => (
               <th key={index}>{i}</th>
             ))}
           </tr>
         </thead>
         <tbody>
-          {business?.map((i, index) => (
+          {ebay?.map((i, index) => (
             <tr key={index}>
               <td>{i.id}</td>
-              <td>{i.name}</td>
-              <td>{i.counter}</td>
+              <td>{i.title}</td>
               <td>{i.link}</td>
+              <td>{i.description}</td>
               <td>{moment(i.createdAt).format("LLLL")}</td>
               <td>
                 {
                   <div className="d-flex justify-content-center">
                     <button
-                      onClick={() => editBusiness(i)}
+                      onClick={() => editEbay(i)}
                       className="btn btn-primary mx-1"
                       title="Üýtgetmek"
                     >
                       <i className="fas fa-cogs"></i>
                     </button>
                     <button
-                      onClick={() => removeBusinessFunc(i.id)}
+                      onClick={() => removeEbayFunc(i.id)}
                       disabled={user.user.role !== "SUPERADMIN"}
                       className="btn btn-danger"
                       title="Pozmak"
@@ -104,4 +105,4 @@ const AdminTableBusiness = observer(() => {
   );
 });
 
-export default AdminTableBusiness;
+export default AdminTableEbay;
