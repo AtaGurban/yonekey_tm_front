@@ -44,9 +44,11 @@ const Category = () => {
               )
             } */}
             <ProductSubCategory titleSubCategory={titleSubCategorys[0]}/>
-            <Slider slider={(sliders.filter(i=> i.number === 7))[0]}/>
             <ProductSubCategory titleSubCategory={titleSubCategorys[1]}/>
-            <ProductSubCategory titleSubCategory={titleSubCategorys[2]}/>
+            <Slider slider={(sliders.filter(i=> i.number === 7))[0]}/>
+            {titleSubCategorys.map((i, index)=>
+              (index > 1 && <ProductSubCategory titleSubCategory={i}/>)
+            )}
         </div>
     );
 };
