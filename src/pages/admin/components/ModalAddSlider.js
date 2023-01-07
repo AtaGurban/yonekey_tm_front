@@ -37,8 +37,8 @@ const ModalAddSlider = ({ show, onHide, updateState }) => {
 
   const createSliderFunc = async () => {
     const formData = new FormData();
-    if (number > 7) {
-      alert("Nomer 7 ýokary bolmaly däl");
+    if (number > 10) {
+      alert("Nomer 10 ýokary bolmaly däl");
       return false;
     }
     formData.append("number", number);
@@ -84,7 +84,7 @@ const ModalAddSlider = ({ show, onHide, updateState }) => {
         <Modal.Body>
           <Form>
             <span className="mt-3 c-bold">
-              Slider nomeri (6-dan ýokary bolmaly däl)
+              Slider nomeri (10-dan ýokary bolmaly däl)
             </span>
             <Form.Control
               className="my-3"

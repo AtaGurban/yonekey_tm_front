@@ -1,7 +1,7 @@
 import React from "react";
 import { Carousel } from "react-responsive-carousel";
 
-const Slider = ({ slider }) => {
+const Slider = ({ my, slider }) => {
   const witdth = window.innerWidth
   let thisMobile = false
   // let centerSlidePercentage 
@@ -17,8 +17,9 @@ const Slider = ({ slider }) => {
   if (witdth < 500){
     thisMobile = true
   }
+  console.log(`my-${my !== undefined ? my : '2'}`);
   return (
-        <Carousel className="my-2" axis="horizontal" centerSlidePercentage={100} autoPlay showStatus={false} centerMode swipeScrollTolerance={5} emulateTouch showThumbs={false} swipeable={true} showIndicators={false} infiniteLoop={true}>
+        <Carousel className={`my-${my !== undefined ? my : '2'}`} axis="horizontal" centerSlidePercentage={100} autoPlay showStatus={false} centerMode swipeScrollTolerance={5} emulateTouch showThumbs={false} swipeable={true} showIndicators={false} infiniteLoop={true}>
           {slider?.img.map((i) => (
             <div key={i?.id}>
               <img

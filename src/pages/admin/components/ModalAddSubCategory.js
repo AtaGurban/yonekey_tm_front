@@ -62,7 +62,7 @@ const ModalAddSubCategory = ({
               onChange={(e) => setName(e.target.value)}
               placeholder={"Kiçi kategoriýanyň ady"}
             />
-            <div className="d-flex justify-content-around">
+            <div className="d-flex flex-wrap justify-content-around">
               <Dropdown className={"mb-3"}>
                 <Dropdown.Toggle>
                   {dropTitleCategory?.name || "Kici kategoriýa görnüşini saýlaň"}
