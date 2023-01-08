@@ -1,8 +1,9 @@
+import { observer } from "mobx-react-lite";
 import React from "react";
 import { clickSubCategory } from "../../http/mainPageApi";
 
 
-const ProductSubCategory = ({ titleSubCategory }) => {
+const ProductSubCategory = observer(({ titleSubCategory }) => {
   return (
     <div className="mt-2 mb-2 container">
       <div className="category_title mb-3">
@@ -31,6 +32,6 @@ const ProductSubCategory = ({ titleSubCategory }) => {
       </div>
     </div>
   );
-};
+});
 
 export default ProductSubCategory;

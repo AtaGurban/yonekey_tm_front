@@ -14,8 +14,9 @@ import { Link } from "react-router-dom";
 import { getAllVideos } from "../../http/courseApi";
 import { localStorageSave } from "../../utils/localStorageFunc";
 import { FAV_VIDEO_PAGE, WATCHED_PAGE } from "../../utils/pathConsts";
+import { observer } from "mobx-react-lite";
 
-const Video = () => {
+const Video = observer(() => {
     const [menuToggle, setMenuToggle] = useState(false)
     const [themaMode, setThemaMode] = useState(true)
     const [videos, setVideos] = useState([])
@@ -109,6 +110,6 @@ const Video = () => {
       </div>
     </div>
   );
-};
+});
 
 export default Video;

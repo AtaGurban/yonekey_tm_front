@@ -10,8 +10,9 @@ import plan from "./marketing_plan.jpg";
 import photoshop from "./marketing_photoshop.jpg";
 import web from "./marketing_web.jpg";
 import freepik from "./businesspeople-working-in-finance-and-accounting-analyze-financi_74952-1399.webp";
+import { observer } from "mobx-react-lite";
 
-const Marketing = () => {
+const Marketing = observer(() => {
   return (
     <div>
       <div className={styles.start}>
@@ -183,6 +184,6 @@ const Marketing = () => {
       </div>
     </div>
   );
-};
+});
 
 export default Marketing;

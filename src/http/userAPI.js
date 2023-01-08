@@ -1,9 +1,10 @@
 import { $authhost, $host } from ".";
 import jwt_decode from 'jwt-decode'
 
-export const registration = async (email, name, password, phone)=>{
 
-    const {data} = await $host.post('api/user/registration', {email, password, name, phone,  role: 'USER'})
+export const registration = async (email, name, password, phone, forCRM)=>{
+
+    const {data} = await $host.post('api/user/registration', {email, password, name, phone, forCRM})
     
     localStorage.setItem('token', data.token)
     return jwt_decode(data.token)
@@ -34,7 +35,6 @@ export const getAllUsers = async (page)=>{
     const {data} = await $authhost.get(`api/admin/get-users?page=${page}`)
     return data
 }
-
 
 export const getOneUsers = async (id)=>{
     const {data} = await $authhost.get(`api/user/get-user?id=${id}`)

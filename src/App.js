@@ -7,7 +7,8 @@ import { useContext, useEffect, useState } from "react";
 import { Context } from ".";
 import { check } from "./http/userAPI";
 import {MoonLoader} from 'react-spinners'
-import { getTitleCategory, getTitleCategoryWithCategory } from "./http/mainPageApi";
+import { getTitleCategoryWithCategory } from "./http/mainPageApi";
+import Popup from "./components/Popup";
 
 
 
@@ -39,6 +40,7 @@ const App = observer(() => {
   }
   return (
     <BrowserRouter>
+      <Popup/>
       <AppRouter />
     </BrowserRouter>
   );

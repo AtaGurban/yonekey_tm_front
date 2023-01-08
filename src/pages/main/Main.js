@@ -6,8 +6,10 @@ import styles from "./main.module.css";
 import Slider from "./components/Slider";
 import { Context } from "../..";
 import ProductCategory from "./components/ProductCategory";
+import Popup from "../../components/Popup";
+import { observer } from "mobx-react-lite";
 
-const Main = () => {
+const Main = observer(() => {
   const [loading, setLoading] = useState(true);
   const [business, setBusiness] = useState([]);
   const [sliders, setSliders] = useState([]);
@@ -109,6 +111,6 @@ const Main = () => {
       </div>
     </div>
   );
-};
+});
 
 export default Main;

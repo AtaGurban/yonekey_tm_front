@@ -6,6 +6,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import {UserStore} from './store/UserStore';  
 import { BannerStore } from './store/bannerStore';
 import { CategoryStore } from './store/category';
+import { PopupStore } from './store/PopupStore';
 
 export const Context = createContext(null);
 
@@ -14,6 +15,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Context.Provider value={{
     user: new UserStore(),
+    popup: new PopupStore(),
     category: new CategoryStore(),
     banner: new BannerStore(),
   }}>

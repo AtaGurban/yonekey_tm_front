@@ -1,9 +1,10 @@
+import { observer } from 'mobx-react-lite';
 import React, { useContext } from 'react';
 import { Link } from "react-router-dom";
 import { Context } from '../../..';
 import logo from '../yone.png'
 
-const MainNavbar = () => {
+const MainNavbar = observer(() => {
     const { user } = useContext(Context);
     return (
         <div className='navbar-main container d-flex justify-content-between align-items-center'>
@@ -16,6 +17,6 @@ const MainNavbar = () => {
             </div>
         </div>
     );
-};
+});
 
 export default MainNavbar;

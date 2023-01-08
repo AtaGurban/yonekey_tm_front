@@ -17,7 +17,7 @@ const Slider = ({ my, slider }) => {
   if (witdth < 500){
     thisMobile = true
   }
-  console.log(`my-${my !== undefined ? my : '2'}`);
+
   return (
         <Carousel className={`my-${my !== undefined ? my : '2'}`} axis="horizontal" centerSlidePercentage={100} autoPlay showStatus={false} centerMode swipeScrollTolerance={5} emulateTouch showThumbs={false} swipeable={true} showIndicators={false} infiniteLoop={true}>
           {slider?.img.map((i) => (

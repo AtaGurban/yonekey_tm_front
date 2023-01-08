@@ -1,3 +1,4 @@
+import { observer } from "mobx-react-lite";
 import React, { useState, useContext } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Context } from "../..";
@@ -5,7 +6,7 @@ import Navbar from "../../components/Navbar";
 import { registration, login } from "../../http/userAPI";
 import { LOGiN_PAGE, MAIN_PAGE } from "../../utils/pathConsts";
 
-const Auth = () => {
+const Auth = observer(() => {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [name, setName] = useState("");
@@ -49,7 +50,7 @@ const Auth = () => {
   return (
     <div className="">
       <Navbar/>
-      <div className="text-center auth-wrapper d-flex">
+      <div className="text-center auth-wrapper mt-3 d-flex">
         {
           isLogin ?         <div
           id="auth-block"
@@ -144,6 +145,6 @@ const Auth = () => {
       </div>
     </div>
   );
-};
+});
 
 export default Auth;

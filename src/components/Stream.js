@@ -4,9 +4,10 @@ import { getFilesByVideoId, getOneVideo } from '../http/courseApi';
 import Navbar from './Navbar';
 import { MoonLoader } from 'react-spinners'
 import { localStorageSave, localStorageView } from '../utils/localStorageFunc';
+import { observer } from 'mobx-react-lite';
 
 
-const Stream = () => {
+const Stream = observer(() => {
   const params = useParams();
   const [quality, setQuality] = useState(720)
   const [video, setVideo] = useState({})
@@ -67,6 +68,6 @@ const Stream = () => {
       </div>
     </div>
   );
-};
+});
 
 export default Stream;

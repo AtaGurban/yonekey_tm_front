@@ -27,9 +27,10 @@ import mail from './mail.png'
 import instagram from './instagram.png'
 import { MoonLoader } from 'react-spinners';
 import { getBannerByPage } from '../../http/bannerApi';
+import { observer } from 'mobx-react-lite';
 
 
-const Developers = () => {
+const Developers = observer(() => {
     const [loading, setLoading] = useState(true)
     const [banner, setBanner] = useState({})
     const [bannerClass, setBannerClass] = useState({})
@@ -296,6 +297,6 @@ const Developers = () => {
     </footer>
         </div>
     );
-};
+});
 
 export default Developers;

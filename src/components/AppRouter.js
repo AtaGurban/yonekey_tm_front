@@ -6,7 +6,6 @@ import { publicRoutes, adminRoutes, authRoutes } from "../routes";
 
 const AppRouter = observer(() => {
   const { user } = useContext(Context);
-console.log(user.isAuth);
   return (
     <Routes>
     {(user.isAuth) ? (

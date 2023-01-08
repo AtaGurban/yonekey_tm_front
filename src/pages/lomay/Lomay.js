@@ -14,8 +14,9 @@ import mail from './mail.png'
 import instagram from './instagram.png'
 import { getBannerByPage } from "../../http/bannerApi";
 import { MoonLoader } from "react-spinners";
+import { observer } from "mobx-react-lite";
 
-const Lomay = () => {
+const Lomay = observer(() => {
   const [headerClass, setHeaderClass] = useState({})
   const [videoClass, setVideoClass] = useState('')
   const [banner, setBanner] = useState({})
@@ -253,6 +254,6 @@ const Lomay = () => {
       </div>
     </div>
   );
-};
+});
 
 export default Lomay;

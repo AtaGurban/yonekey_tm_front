@@ -1,3 +1,4 @@
+import { observer } from "mobx-react-lite";
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../..";
@@ -18,7 +19,7 @@ import ModalAddVideo from "./components/ModalAddVideo";
 import SecondSidebarMenu from "./components/SecondSidebarMenu";
 import logo from "./fav.png";
 
-const Admin = () => {
+const Admin = observer(() => {
   const [firstSidebarToggle, setFirstSidebarToggle] = useState(true);
   const [activeMenu, setActiveMenu] = useState(1);
   const { user } = useContext(Context);
@@ -178,6 +179,6 @@ const Admin = () => {
       </div>
     </div>
   );
-};
+});
 
 export default Admin;

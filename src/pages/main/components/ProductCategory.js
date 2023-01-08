@@ -1,16 +1,17 @@
+import { observer } from "mobx-react-lite";
 import React from "react";
 import { Link } from "react-router-dom";
 import { clickCategory } from "../../../http/mainPageApi";
 import { CATEGORY_PAGE } from "../../../utils/pathConsts";
 
-const ProductCategory = ({ titleCategory }) => {
+const ProductCategory = observer(({ titleCategory }) => {
   return (
     <div className="my-4 container">
       <div className="category_title mb-3">
         <h3>{titleCategory?.name}</h3>
       </div>
       <div className="mx-3 d-flex justify-content-between align-items-center flex-wrap">
-        {titleCategory?.category?.sort((a, b) => {
+        {titleCategory?.category?.slice().sort((a, b) => {
                 return b.counter - a.counter;
               }).map((i, index) =>
           i.withLink ? (
@@ -50,6 +51,6 @@ const ProductCategory = ({ titleCategory }) => {
       </div>
     </div>
   );
-};
+});
 
 export default ProductCategory;
