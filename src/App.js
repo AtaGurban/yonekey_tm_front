@@ -39,7 +39,7 @@ const App = observer(() => {
     </div>)
   }
   return (
-    <BrowserRouter basename="/yonekey_tm_front">
+    <BrowserRouter>
       <Popup/>
       <AppRouter />
     </BrowserRouter>
