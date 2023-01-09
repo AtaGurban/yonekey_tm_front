@@ -18,6 +18,7 @@ const ModalAddEbay = ({ show, onHide, updateState }) => {
         updateState();
         setDescription('')
         setTitle('')
+        setLink('')
         alert("Üstünlikli ýerine ýetirildi");
       } catch (error) {
         console.log(error);

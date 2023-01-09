@@ -18,7 +18,8 @@ const ModalEditEbay = ({ show, onHide, updateState, ebay }) => {
         onHide();
         updateState();
         setDescription('')
-        setTitle('')
+        setTitle('') 
+        setLink('') 
         alert("Üstünlikli ýerine ýetirildi");
       } catch (error) {
         console.log(error);

@@ -1,3 +1,4 @@
+import { toJS } from "mobx";
 import { observer } from "mobx-react-lite";
 import React, { useContext, useEffect, useState } from "react";
 import Modal from "react-bootstrap/Modal";
@@ -13,14 +14,14 @@ const Popup = observer(() => {
   const [password, setPassword] = useState("");
   const { user, popup } = useContext(Context);
 
-
+  console.log(!user.isAuth);
   useEffect(()=>{
-    if (!user.isAuth){
+    if (!toJS(user.isAuth)){
         setTimeout(() => {
             popup.setVisible(true)
-        }, 3 * 60 * 1000);
+        }, 60 * 1000);
     }
-  }, [])
+  }, [user, popup])
 
   const signIn = async () => {
     try {

@@ -65,7 +65,7 @@ const ModalAddSubCategory = ({
             <div className="d-flex flex-wrap justify-content-around">
               <Dropdown className={"mb-3"}>
                 <Dropdown.Toggle>
-                  {dropTitleCategory?.name || "Kici kategoriýa görnüşini saýlaň"}
+                  {dropTitleCategory?.name || "Kategoriýa görnüşini saýlaň"}
                 </Dropdown.Toggle>
                 <Dropdown.Menu>
                   {titleCategory.map((role, index) => (
@@ -80,7 +80,7 @@ const ModalAddSubCategory = ({
               </Dropdown>
               <Dropdown className={"mb-3"}>
                 <Dropdown.Toggle disabled={dropTitleCategory === null}>
-                  {dropCategory?.name || "Kici kategoriýa saýlaň"}
+                  {dropCategory?.name || "Kategoriýa saýlaň"}
                 </Dropdown.Toggle>
                 <Dropdown.Menu>
                   {categorys.filter(i => i?.titleCategoryId === dropTitleCategory?.id).map((role, index) => (
