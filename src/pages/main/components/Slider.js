@@ -21,7 +21,7 @@ const Slider = ({ my, slider }) => {
   return (
         <Carousel className={`my-${my !== undefined ? my : '2'}`} axis="horizontal" centerSlidePercentage={100} autoPlay showStatus={false} centerMode swipeScrollTolerance={5} emulateTouch showThumbs={false} swipeable={true} showIndicators={false} infiniteLoop={true}>
           {slider?.img.map((i) => (
-            <div key={i?.id}>
+            <div className="px-md-5" key={i?.id}>
               <img
                 style={{minHeight: '150px'}}
                 src={`${process.env.REACT_APP_API_URL}api/static/${(thisMobile ? i?.mobileImg : i?.webImg)}`}

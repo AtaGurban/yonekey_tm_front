@@ -10,7 +10,6 @@ import styles from "./main.module.css";
 import Slider from "./components/Slider";
 import { Context } from "../..";
 import ProductCategory from "./components/ProductCategory";
-import Popup from "../../components/Popup";
 import { observer } from "mobx-react-lite";
 import { Link } from "react-router-dom";
 
@@ -103,14 +102,14 @@ const Main = observer(() => {
         </div>
         <Slider slider={sliders.filter((i) => i.number === 1)[0]} />
         <div
-          className={`${styles["our-business"]} container my-2 w-100 text-center`}
+          className={`${styles["our-business"]} container my-3 w-100 text-center`}
         >
           <h2 className="fw-bold fs-1">Biziň Bisnezlerimiz</h2>
           <div className={`${styles["slide-business-two"]} my-3 w-100 d-flex`}>
             {business
               .sort((a, b) => {
                 return b.counter - a.counter;
-              })
+              }) 
               .map((i) =>
                 (i.name === "Yonekey" || i.name === "YBilim") ? (
                   <a

@@ -108,7 +108,7 @@ const ModalAddSlider = ({ show, onHide, updateState }) => {
               </Button>
               {webImages.map((item) => (
                 <div key={item.number} className="row mt-3">
-                  <p className="mb-0">Web üçin (1980*792)</p>
+                  <p className="mb-0">Web üçin (1620*400)</p>
                   <div className="col-8 mt-2">
                     <Form.Control
                       className=""
